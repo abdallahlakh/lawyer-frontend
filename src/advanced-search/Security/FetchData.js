@@ -5,7 +5,7 @@ async function fetchData(navigate, setUserType, setId) {
         const refreshToken = localStorage.getItem('refresh-token');
 
         if (accessToken) {
-            const validAccessToken = await fetch('http://127.0.0.1:8000/api/auth/jwt/verify/', {
+            const validAccessToken = await fetch('https://djoserauthapi-1.onrender.com/api/auth/jwt/verify/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -14,7 +14,7 @@ async function fetchData(navigate, setUserType, setId) {
             });
 
             if(validAccessToken.ok){
-                const response = await fetch('http://127.0.0.1:8000/api/auth/users/me/', {
+                const response = await fetch('https://djoserauthapi-1.onrender.com/api/auth/users/me/', {
                     method: 'GET',
                     headers: {
                         'Authorization': 'JWT ' + localStorage.getItem('access-token'),
@@ -42,7 +42,7 @@ async function fetchData(navigate, setUserType, setId) {
             }
 
             if (!validAccessToken.ok) {                        
-                const refreshAccessToken = await fetch('http://127.0.0.1:8000/api/auth/jwt/refresh/', {
+                const refreshAccessToken = await fetch('https://djoserauthapi-1.onrender.com/api/auth/jwt/refresh/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

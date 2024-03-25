@@ -24,7 +24,7 @@ const Review = () => {
         let accountRetrieved = await fetchData(navigate);
         console.log(accountRetrieved);
 
-        fetch('http://127.0.0.1:8000/api/auth/users/me/', {
+        fetch('https://djoserauthapi-1.onrender.com/api/auth/users/me/', {
             method: 'GET',
             headers: {
                 'Authorization': 'JWT ' + localStorage.getItem('access-token'),
@@ -50,7 +50,7 @@ const Review = () => {
             }
 
             setReviewData(updatedReviewData);
-            fetch('http://127.0.0.1:8000/adi/make-review/', {
+            fetch('https://djoserauthapi-1.onrender.com/adi/make-review/', {
                 method: 'POST',
                 headers: {
                     'Authorization': 'JWT ' + localStorage.getItem('access-token'),

@@ -8,7 +8,7 @@ const ResetPasswordForm = () => {
         event.preventDefault();
     
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/auth/users/reset_password/', { email });
+            const response = await axios.post('https://djoserauthapi-1.onrender.com/api/auth/users/reset_password/', { email });
             console.log(response.data);
         } catch (error) {
             console.error(error);

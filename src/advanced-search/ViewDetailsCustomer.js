@@ -23,7 +23,7 @@ const ViewDetailsCustomer = () => {
             if(accountRetrieved) {
                 const fetchCustomerDetails = async () => {
                     try {
-                        const response = await axios.get(`http://localhost:8000/adi/customer-detail/${id}/`, {
+                        const response = await axios.get(`https://djoserauthapi-1.onrender.com/adi/customer-detail/${id}/`, {
                             headers: {
                                 'Authorization': 'JWT ' + localStorage.getItem('access-token'),
                             },

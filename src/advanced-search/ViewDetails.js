@@ -31,7 +31,7 @@ const ViewDetails = () => {
             if(accountRetrieved) {
                 const fetchLawyerDetails = async () => {
                     try {
-                        const response = await axios.get(`http://localhost:8000/adi/lawyer-detail/${id}/`, {
+                        const response = await axios.get(`https://djoserauthapi-1.onrender.com/adi/lawyer-detail/${id}/`, {
                             headers: {
                                 'Authorization': 'JWT ' + localStorage.getItem('access-token'),
                             },
@@ -44,7 +44,7 @@ const ViewDetails = () => {
     
                 const fetchReviews = async () => {
                     try {
-                        const response = await axios.get(`http://localhost:8000/adi/reviews/${id}/`, {
+                        const response = await axios.get(`https://djoserauthapi-1.onrender.com/adi/reviews/${id}/`, {
                             headers: {
                                 'Authorization': 'JWT ' + localStorage.getItem('access-token'),
                             },

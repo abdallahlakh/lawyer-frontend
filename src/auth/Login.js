@@ -14,7 +14,7 @@ const LoginForm = () => {
         console.log(`Email: ${email}, Password: ${password}`);
     
         try {
-            const response = await fetch('http://localhost:8000/api/auth/jwt/create/', {
+            const response = await fetch('https://djoserauthapi-1.onrender.com/api/auth/jwt/create/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

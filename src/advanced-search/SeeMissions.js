@@ -10,7 +10,7 @@ const SeeMissions = () => {
     const [userType, setUserType] = useState(null);
     const [id, setId] = useState(10);
     function deleteBooking(id) {
-        fetch(`http://127.0.0.1:8000/adi/delete-booking/${id}/`, {
+        fetch(`https://djoserauthapi-1.onrender.com/adi/delete-booking/${id}/`, {
             method: 'DELETE',
         })
         .then(response => {
@@ -39,7 +39,7 @@ const SeeMissions = () => {
         const selectedState = document.getElementById(`state-${missionId}`).value;
 
         try {
-            const response = await axios.put(`http://127.0.0.1:8000/adi/update-mission/${missionId}/`, {
+            const response = await axios.put(`https://djoserauthapi-1.onrender.com/adi/update-mission/${missionId}/`, {
                 state: selectedState,
             }, {
                 headers: {
@@ -74,7 +74,7 @@ const SeeMissions = () => {
     useEffect(() => {
         // Function to fetch missions
         const fetchMissions = async () => {
-            axios.get(`http://127.0.0.1:8000/adi/see-missions/${id}/`, {
+            axios.get(`https://djoserauthapi-1.onrender.com/adi/see-missions/${id}/`, {
                 headers: {
                     'Authorization': 'JWT ' + localStorage.getItem('access-token'),
                 },

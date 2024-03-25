@@ -33,8 +33,8 @@ const RegistrationForm = () => {
 
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/auth/users/', data);
-            
+            const response = await axios.post('https://djoserauthapi-1.onrender.com/api/auth/users/', data);
+            console.log(response);
             if(response.status === 201){
                 console.log('Account created successfully');
                 setMessage('we send you an email to confirm your account');

@@ -62,7 +62,7 @@ const FilterSection = () => {
         formData.append('language', selectedLanguage);
         formData.append('lawyerName', inputValue);
     
-        fetch('http://127.0.0.1:8000/adi/search-lawyers', {
+        fetch('https://djoserauthapi-1.onrender.com/adi/search-lawyers', {
             method: 'POST',
             body: formData,
             headers: {

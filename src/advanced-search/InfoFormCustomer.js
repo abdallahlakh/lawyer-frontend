@@ -55,7 +55,7 @@ const InfoFormCustomer = () => {
         
             
                 console.log('Account retrieved successfully',accountRetrieved);
-            const response = await fetch('http://127.0.0.1:8000/api/auth/users/me/', {
+            const response = await fetch('https://djoserauthapi-1.onrender.com/api/auth/users/me/', {
                 method: 'GET',
                 headers: {
                     'Authorization': 'JWT ' + localStorage.getItem('access-token'),
@@ -78,7 +78,7 @@ const InfoFormCustomer = () => {
                     }
                 };
     
-                axios.post('http://127.0.0.1:8000/adi/insert-customers/', data2, {
+                axios.post('https://djoserauthapi-1.onrender.com/adi/insert-customers/', data2, {
                     headers: {
                         'Authorization': 'JWT ' + localStorage.getItem('access-token'),
                     },

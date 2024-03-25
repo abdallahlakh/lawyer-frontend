@@ -48,7 +48,7 @@ const Navbar = () => {
     }
     const getAccount = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/auth/users/me/', {
+            const response = await fetch('https://djoserauthapi-1.onrender.com/api/auth/users/me/', {
                 method: 'GET',
                 headers: {
                     'Authorization': 'JWT ' + localStorage.getItem('access-token'),

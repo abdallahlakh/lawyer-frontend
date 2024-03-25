@@ -21,7 +21,7 @@ const Booking = () => {
     });
     
     const deleteBooking = (id) => {
-        fetch(`http://127.0.0.1:8000/api/bookings/${id}/`, {
+        fetch(`https://djoserauthapi-1.onrender.com/api/bookings/${id}/`, {
             method: 'DELETE',
             headers: {
                 'Authorization': 'JWT ' + localStorage.getItem('access-token'),
@@ -48,7 +48,7 @@ const Booking = () => {
         console.log(accountRetrieved);
         
         event.preventDefault();
-        fetch('http://127.0.0.1:8000/api/auth/users/me/', {
+        fetch('https://djoserauthapi-1.onrender.com/api/auth/users/me/', {
     method: 'GET',
     headers: {
         'Authorization': 'JWT ' + localStorage.getItem('access-token'),
@@ -84,7 +84,7 @@ const Booking = () => {
 
     setBookingData(updatedBookingData);
 
-    axios.post('http://127.0.0.1:8000/adi/make-booking/', updatedBookingData, {
+    axios.post('https://djoserauthapi-1.onrender.com/adi/make-booking/', updatedBookingData, {
         headers: {
             'Authorization': 'JWT ' + localStorage.getItem('access-token'),
         },

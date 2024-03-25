@@ -19,7 +19,7 @@ const ChangePasswordForm = () => {
             const token = localStorage.getItem('access-token'); // Assuming the token is stored in localStorage
 
             const response = await axios.post(
-                'http://127.0.0.1:8000/api/auth/users/set_password/', 
+                'https://djoserauthapi-1.onrender.com/api/auth/users/set_password/', 
                 {
                     new_password: newPassword,
                     re_new_password: reNewPassword,

@@ -8,7 +8,7 @@ const DeleteAccountForm = () => {
     const deleteAccount = (event) => {
         event.preventDefault(); // Prevent the form from submitting by default
 
-        axios.delete('http://127.0.0.1:8000/api/auth/users/me/', {
+        axios.delete('https://djoserauthapi-1.onrender.com/api/auth/users/me/', {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'JWT ' + localStorage.getItem('access-token'),
