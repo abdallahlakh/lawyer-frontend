@@ -100,12 +100,20 @@ const Navbar = () => {
         },
         navbarLinks: {
             display: 'flex',
-            flexDirection: 'row', // Change this line
+            flexDirection: 'row',
             alignItems: 'center',
-            gap: '2px',
+            gap: '10px', // Increase the gap
             color: 'white',
-            
-          
+        },
+        link: {
+            display: 'block',
+            padding: '10px', // Increase padding
+            color: 'white',
+            transition: 'background-color 0.2s',
+            textDecoration: 'none', // Remove underline
+            backgroundColor: '#006400', // Add background color
+            borderRadius: '5px', // Add border radius
+            textAlign: 'center', // Center the text
         },
         managementOptions: {
             position: 'absolute',
@@ -115,12 +123,6 @@ const Navbar = () => {
             borderRadius: '5px',
             boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
             textAlign: 'left',
-        },
-        link: {
-            display: 'block',
-            padding: '2px',
-            color: 'white',
-            transition: 'background-color 0.2s',
         },
     };
     
@@ -139,7 +141,7 @@ const Navbar = () => {
             {userType === 'customer' && <Link to="/see-bookings">See my bookings</Link>}
             <button onClick={insertInfo}>Insert My Info</button>  
             <button onClick={getInfo}>Get My Info</button>
-            <Link to="/advanced-search">Search For Lawyers</Link>
+            <Link style={styles.link} to="/advanced-search">Search For Lawyers</Link>
             <button onClick={logoutAccount}>Logout</button>
             <button onClick={handleManagementOptionsClick}>Manage Account</button>
         </div>
