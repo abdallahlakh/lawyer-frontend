@@ -114,7 +114,7 @@ const LoginForm = () => {
 
                 <button style={styles.button} type="submit">Submit</button>
                 <Link style={styles.link} to="/Registration">Register</Link>
-                <GoogleLogin
+                {/* <GoogleLogin
                     onSuccess={async credentialResponse => {
                         const decoded = jwtDecode(credentialResponse.credential);
                         console.log(decoded);
@@ -122,7 +122,7 @@ const LoginForm = () => {
                     onError={() => {
                         console.log('Login Failed');
                     }}
-                />
+                /> */}
                  {message && <p className="text-green-500">{message}</p>} {/* Display the success message if it exists */}
            
             </form>
