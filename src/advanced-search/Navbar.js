@@ -102,7 +102,7 @@ const Navbar = () => {
             display: 'flex',
             flexDirection: 'row', // Change this line
             alignItems: 'center',
-            gap: '2px',
+            gap: '10px', // Add this line
             color: 'white',
             
           
