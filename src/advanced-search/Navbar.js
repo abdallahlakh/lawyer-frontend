@@ -100,7 +100,7 @@ const Navbar = () => {
         },
         navbarLinks: {
             display: 'flex',
-            flexDirection: 'column',
+            flexDirection: 'row', // Change this line
             alignItems: 'center',
             gap: '2px',
         },
@@ -118,7 +118,8 @@ const Navbar = () => {
             padding: '2px',
             color: 'white',
             transition: 'background-color 0.2s',
-        },}
+        },
+    };
     
 
     // Define other functions like getUserData, updateUserData, and changePassword in a similar way
