@@ -110,7 +110,7 @@ const Navbar = () => {
         <div className="flex flex-col md:flex-row justify-between items-center h-12 md:h-16 p-3 md:p-5 bg-blue" style={styles.navbar}>
         <div className="text-white mb-2 md:mb-0">
             {userType === 'customer' && <Link to="/my-account">Customer account</Link>}
-            {userType === 'lawyer' && <Link to="/my-account">Lawyer account</Link>}
+            {userType === 'lawyer' && <Link to="/my-account">Lawyewss;r account</Link>}
         </div>
         <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-2" style={styles.navbarLinks}>
             {userType === 'lawyer' && <Link to="/see-missions" className="text-white cursor-pointer">See my missions</Link>}
