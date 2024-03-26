@@ -1,101 +1,176 @@
 import React, {useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import fetchData from './Security/FetchData';
-import styled from 'styled-components';
 
-const NavbarContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 3px;
-    background-color: #006400;
-`;
+const Navbar = () => {
+    const navigate = useNavigate();
+    const [showManagementOptions, setShowManagementOptions] = useState(false);
+    const [userType, setUserType] = useState(null);
+    const [id, setId] = useState(10);
 
-const NavbarText = styled.div`
-    color: white;
-    margin-bottom: 20px;
-`;
+    useEffect(() => {
+        (async () => {
+            let accountRetrieved = await fetchData(navigate, setUserType, setId);
+            console.log(accountRetrieved);
+           
+            if(accountRetrieved) {
+                return;
+            }
+            if(!accountRetrieved) {
+                accountRetrieved = await fetchData(navigate, setUserType, setId);
+                return;
+            }
+        })();
+    }, []);
 
-const NavbarLinks = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    color: white;
-
-    @media (max-width: 600px) {
-        flex-direction: column;
+    const insertInfo = () => {
+        if (userType === 'lawyer'){
+            navigate('/insert-info-lawyer');
+        }
+        else if (userType === 'customer'){
+            navigate('/insert-info-customer');
+        }
     }
-`;
-
-const StyledLink = styled(Link)`
-    display: block;
-    padding: 10px 20px;
-    color: white;
-    transition: background-color 0.2s;
-    text-decoration: none;
-    background-color: #006400;
-    border-radius: 5px;
-    text-align: center;
-`;
-
-const StyledButton = styled.button`
-    display: inline-block;
-    padding: 10px 20px;
-    color: white;
-    background-color: #006400;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    text-align: center;
-    transition: background-color 0.2s;
-    cursor: pointer;
-
-    @media (max-width: 600px) {
-        margin-bottom: 10px;
+        
+    const getInfo = () => {
+        if (userType === 'lawyer'){
+            navigate(`/lawyer-details/${id}`);
+        }
+        else if (userType === 'customer'){
+            navigate(`/customer-details/${id}`);
+        }       
     }
-`;
 
-const ManagementOptions = styled.div`
-    position: absolute;
-    top: 12px;
-    right: 5px;
-    background-color: black;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    text-align: left;
-
-    @media (max-width: 600px) {
-        position: static;
-        box-shadow: none;
+    const logoutAccount = () => {
+        localStorage.removeItem('access-token');
+        localStorage.removeItem('refresh-token');
+        navigate('/login');
     }
-`;
 
-// ... (keep your existing component code here)
+    const getAccount = async () => {
+        try {
+            const response = await fetch('https://djoserauthapi-1.onrender.com/api/auth/users/me/', {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'JWT ' + localStorage.getItem('access-token'),
+                },
+            });
+    
+            if (!response.ok) {
+                if (response.status === 401) {
+                    let accountRetrieved = await fetchData(navigate, setUserType, setId);
+                    console.log(accountRetrieved);
+    
+                    if (!accountRetrieved) {
+                        accountRetrieved = await fetchData(navigate, setUserType, setId);
+                    }
+                    return;
+                } else {
+                    console.error('Failed to retrieve account');
+                    return;
+                }
+            }
+    
+            console.log('Account retrieved successfully');
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
 
-return (
-    <NavbarContainer>
-        <NavbarText>
-            {userType === 'customer' && <StyledLink to="/my-account">Customer account</StyledLink>}
-            {userType === 'lawyer' && <StyledLink to="/my-account">Lawyer account</StyledLink>}
-            <StyledButton onClick={handleManagementOptionsClick}>Manage Account</StyledButton>
-        </NavbarText>
-        <NavbarLinks>
-            {userType === 'lawyer' && <StyledLink to="/see-missions">See my missions</StyledLink>}
-            {userType === 'customer' && <StyledLink to="/see-bookings">See my bookings</StyledLink>}
-            <StyledButton onClick={insertInfo}>Insert My Info</StyledButton>  
-            <StyledButton onClick={getInfo}>Get My Info</StyledButton>
-            <StyledLink to="/advanced-search">Search For Lawyers</StyledLink>
-            <StyledButton onClick={logoutAccount}>Logout</StyledButton>
-        </NavbarLinks>
+    const handleManagementOptionsClick = () => {
+        setShowManagementOptions(!showManagementOptions);
+    }
+
+
+    const styles = {
+        navbar: {
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '3px',
+            backgroundColor: '#006400',
+        },
+        navbarText: {
+            color: 'white',
+            marginBottom: '20px',
+        },
+        navbarLinks: {
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '10px',
+            color: 'white',
+            '@media (max-width: 600px)': {
+                flexDirection: 'column',
+            },
+        },
+        link: {
+            display: 'block',
+            padding: '10px 20px',
+            color: 'white',
+            transition: 'background-color 0.2s',
+            textDecoration: 'none',
+            backgroundColor: '#006400',
+            borderRadius: '5px',
+            textAlign: 'center',
+        },
+        button: {
+            display: 'inline-block',
+            padding: '10px 20px',
+            color: 'white',
+            backgroundColor: '#006400',
+            border: 'none',
+            borderRadius: '5px',
+            textDecoration: 'none',
+            textAlign: 'center',
+            transition: 'background-color 0.2s',
+            cursor: 'pointer',
+            '@media (max-width: 600px)': {
+                marginBottom: '10px',
+            },
+        },
+        managementOptions: {
+            position: 'absolute',
+            top: '12px',
+            right: '5px',
+            backgroundColor: 'black',
+            borderRadius: '5px',
+            boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
+            textAlign: 'left',
+            '@media (max-width: 600px)': {
+                position: 'static',
+                boxShadow: 'none',
+            },
+        },
+    };
+    return (
+        <div className="flex flex-col justify-between items-center p-3 bg-green-700">
+        <div className="text-white mb-20">
+            {userType === 'customer' && <Link to="/my-account" className="block p-2 text-white transition-colors bg-green-700 rounded-md text-center">Customer account</Link>}
+            {userType === 'lawyer' && <Link to="/my-account" className="block p-2 text-white transition-colors bg-green-700 rounded-md text-center">Lawyer account</Link>}
+            <button className="inline-block p-2 text-white transition-colors bg-green-700 rounded-md text-center cursor-pointer" onClick={handleManagementOptionsClick}>Manage Account</button>
+        </div>
+        <div className="flex flex-row items-center gap-10 text-white sm:flex-col">
+            {userType === 'lawyer' && <Link to="/see-missions" className="block p-2 text-white transition-colors bg-green-700 rounded-md text-center">See my missions</Link>}
+            {userType === 'customer' && <Link to="/see-bookings" className="block p-2 text-white transition-colors bg-green-700 rounded-md text-center">See my bookings</Link>}
+            <button className="inline-block p-2 text-white transition-colors bg-green-700 rounded-md text-center cursor-pointer" onClick={insertInfo}>Insert My Info</button>  
+            <button className="inline-block p-2 text-white transition-colors bg-green-700 rounded-md text-center cursor-pointer" onClick={getInfo}>Get My Info</button>
+            <Link to="/advanced-search" className="block p-2 text-white transition-colors bg-green-700 rounded-md text-center">Search For Lawyers</Link>
+            <button className="inline-block p-2 text-white transition-colors bg-green-700 rounded-md text-center cursor-pointer" onClick={logoutAccount}>Logout</button>
+        </div>
         {showManagementOptions && (
-            <ManagementOptions>
-                <StyledLink onClick={getAccount}>Get Account</StyledLink>
-                <StyledLink to="/delete-account">Delete Account</StyledLink>
-                <StyledLink to="/reset-password">Reset Password</StyledLink>
-                <StyledLink to="/change-password">Change Password</StyledLink>
-            </ManagementOptions>
+            <div className="absolute top-12 right-5 bg-black rounded-md shadow-lg text-left sm:static sm:shadow-none">
+                <Link onClick={getAccount} className="block p-2 text-white transition-colors bg-green-700 rounded-md text-center">Get Account</Link>
+                <Link to="/delete-account" className="block p-2 text-white transition-colors bg-green-700 rounded-md text-center">Delete Account</Link>
+                <Link to="/reset-password" className="block p-2 text-white transition-colors bg-green-700 rounded-md text-center">Reset Password</Link>
+                <Link to="/change-password" className="block p-2 text-white transition-colors bg-green-700 rounded-md text-center">Change Password</Link>
+            </div>
         )}
-    </NavbarContainer>
-);
+    </div>
+    );
+}
+
+export default Navbar;
