@@ -147,29 +147,29 @@ const Navbar = () => {
         },
     };
     return (
-        <div style={styles.navbar}>
-            <div style={styles.navbarText}>
-                {userType === 'customer' && <Link to="/my-account">Customer account</Link>}
-                {userType === 'lawyer' && <Link to="/my-account">Lawyer account</Link>}
-                <button style={styles.button} onClick={handleManagementOptionsClick}>Manage Account</button>
-            </div>
-            <div style={styles.navbarLinks}>
-                {userType === 'lawyer' && <Link to="/see-missions">See my missions</Link>}
-                {userType === 'customer' && <Link to="/see-bookings">See my bookings</Link>}
-                <button style={styles.button} onClick={insertInfo}>Insert My Info</button>  
-                <button style={styles.button} onClick={getInfo}>Get My Info</button>
-                <Link style={styles.link} to="/advanced-search">Search For Lawyers</Link>
-                <button style={styles.button} onClick={logoutAccount}>Logout</button>
-            </div>
-            {showManagementOptions && (
-                <div style={styles.managementOptions}>
-                    <Link style={styles.link} onClick={getAccount}>Get Account</Link>
-                    <Link style={styles.link} to="/delete-account">Delete Account</Link>
-                    <Link style={styles.link} to="/reset-password">Reset Password</Link>
-                    <Link style={styles.link} to="/change-password">Change Password</Link>
-                </div>
-            )}
+        <div className="flex flex-col justify-between items-center p-3 bg-green-700">
+        <div className="text-white mb-20">
+            {userType === 'customer' && <Link to="/my-account" className="block p-2 text-white transition-colors bg-green-700 rounded-md text-center">Customer account</Link>}
+            {userType === 'lawyer' && <Link to="/my-account" className="block p-2 text-white transition-colors bg-green-700 rounded-md text-center">Lawyer account</Link>}
+            <button className="inline-block p-2 text-white transition-colors bg-green-700 rounded-md text-center cursor-pointer" onClick={handleManagementOptionsClick}>Manage Account</button>
         </div>
+        <div className="flex flex-row items-center gap-10 text-white sm:flex-col">
+            {userType === 'lawyer' && <Link to="/see-missions" className="block p-2 text-white transition-colors bg-green-700 rounded-md text-center">See my missions</Link>}
+            {userType === 'customer' && <Link to="/see-bookings" className="block p-2 text-white transition-colors bg-green-700 rounded-md text-center">See my bookings</Link>}
+            <button className="inline-block p-2 text-white transition-colors bg-green-700 rounded-md text-center cursor-pointer" onClick={insertInfo}>Insert My Info</button>  
+            <button className="inline-block p-2 text-white transition-colors bg-green-700 rounded-md text-center cursor-pointer" onClick={getInfo}>Get My Info</button>
+            <Link to="/advanced-search" className="block p-2 text-white transition-colors bg-green-700 rounded-md text-center">Search For Lawyers</Link>
+            <button className="inline-block p-2 text-white transition-colors bg-green-700 rounded-md text-center cursor-pointer" onClick={logoutAccount}>Logout</button>
+        </div>
+        {showManagementOptions && (
+            <div className="absolute top-12 right-5 bg-black rounded-md shadow-lg text-left sm:static sm:shadow-none">
+                <Link onClick={getAccount} className="block p-2 text-white transition-colors bg-green-700 rounded-md text-center">Get Account</Link>
+                <Link to="/delete-account" className="block p-2 text-white transition-colors bg-green-700 rounded-md text-center">Delete Account</Link>
+                <Link to="/reset-password" className="block p-2 text-white transition-colors bg-green-700 rounded-md text-center">Reset Password</Link>
+                <Link to="/change-password" className="block p-2 text-white transition-colors bg-green-700 rounded-md text-center">Change Password</Link>
+            </div>
+        )}
+    </div>
     );
 }
 
