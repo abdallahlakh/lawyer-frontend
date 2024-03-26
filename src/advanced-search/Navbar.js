@@ -91,30 +91,29 @@ const Navbar = () => {
 
     return (
  
- 
-        <div className="flex flex-col sm:flex-row justify-between items-center h-8 sm:h-12 p-2 sm:p-5 bg-blue" style={{backgroundColor: "#006400"}}>
-            <div className="text-white mb-2 sm:mb-0">
-                {userType === 'customer' && <Link to="/my-account">Customer account</Link>}
-                {userType === 'lawyer' && <Link to="/my-account">Lawyer account</Link>}
+        <div className="flex flex-col md:flex-row justify-between items-center h-12 md:h-16 p-3 md:p-5 bg-blue" style={{backgroundColor: "#006400"}}>
+        <div className="text-white mb-2 md:mb-0">
+            {userType === 'customer' && <Link to="/my-account">Customer account</Link>}
+            {userType === 'lawyer' && <Link to="/my-account">Lawyer account</Link>}
+        </div>
+        <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-2">
+            {userType === 'lawyer' && <Link to="/see-missions" className="text-white cursor-pointer">See my missions</Link>}
+            {userType === 'customer' && <Link to="/see-bookings" className="text-white cursor-pointer">See my bookings</Link>}
+            <button onClick={insertInfo} className="text-white cursor-pointer">Insert My Info</button>  
+            <button onClick={getInfo} className='text-white cursor-pointer'>Get My Info</button>
+            <Link to="/advanced-search" className="text-white cursor-pointer">Search For Lawyers</Link>
+            <button onClick={logoutAccount} style={{backgroundColor: "#006400"}} className="text-white border-none rounded cursor-pointer bg-black">Logout</button>
+            <button onClick={handleManagementOptionsClick} style={{backgroundColor: "#006400"}} className="text-white border-none rounded cursor-pointer bg-black">Manage Account</button>
+        </div>
+        {showManagementOptions && (
+            <div className="absolute top-12 right-5 bg-black rounded shadow-md z-10 text-left">
+                <Link onClick={getAccount} className="block p-2 text-white cursor-pointer transition-colors duration-200 hover:bg-gray-200">Get Account</Link>
+                <Link to="/delete-account" className="block p-2 text-white cursor-pointer transition-colors duration-200 hover:bg-gray-200">Delete Account</Link>
+                <Link to="/reset-password" className="block p-2 text-white cursor-pointer transition-colors duration-200 hover:bg-gray-200">Reset Password</Link>
+                <Link to="/change-password" className="block p-2 text-white cursor-pointer transition-colors duration-200 hover:bg-gray-200">Change Password</Link>
             </div>
-            <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2">
-                {userType === 'lawyer' && <Link to="/see-missions" className="text-white cursor-pointer">See my missions</Link>}
-                {userType === 'customer' && <Link to="/see-bookings" className="text-white cursor-pointer">See my bookings</Link>}
-                <button onClick={insertInfo} className="text-white cursor-pointer">Insert My Info</button>  
-                <button onClick={getInfo} className='text-white cursor-pointer'>Get My Info</button>
-                <Link to="/advanced-search" className="text-white cursor-pointer">Search For Lawyers</Link>
-                <button onClick={logoutAccount} style={{backgroundColor: "#006400"}} className="text-white border-none rounded cursor-pointer bg-black">Logout</button>
-                <button onClick={handleManagementOptionsClick} style={{backgroundColor: "#006400"}} className="text-white border-none rounded cursor-pointer bg-black">Manage Account</button>
-            </div>
-            {showManagementOptions && (
-                <div className="absolute top-12 right-5 bg-black rounded shadow-md z-10 text-left">
-                    <Link onClick={getAccount} className="block p-2 text-white cursor-pointer transition-colors duration-200 hover:bg-gray-200">Get Account</Link>
-                    <Link to="/delete-account" className="block p-2 text-white cursor-pointer transition-colors duration-200 hover:bg-gray-200">Delete Account</Link>
-                    <Link to="/reset-password" className="block p-2 text-white cursor-pointer transition-colors duration-200 hover:bg-gray-200">Reset Password</Link>
-                    <Link to="/change-password" className="block p-2 text-white cursor-pointer transition-colors duration-200 hover:bg-gray-200">Change Password</Link>
-                </div>
-            )}
-        </div>       );
+        )}
+    </div>       );
 }
 
 export default Navbar;
