@@ -109,7 +109,7 @@ const Navbar = () => {
             margin: '0 10px',
         },
         button: {
-            backgroundColor: '#008000',
+            backgroundColor: '#FF6347',
             color: 'white',
             border: 'none',
             padding: '5px 10px',
@@ -131,8 +131,8 @@ const Navbar = () => {
     return (
         <div style={styles.navbar}>
             <div style={styles.navbarLinks}>
-                {userType === 'lawyer' && <Link style={styles.link} to="/my-account">Lawyer account</Link>}
-                {userType === 'customer' && <Link style={styles.link} to="/my-account">Customer account</Link>}
+                {userType === 'lawyer' && <button style={styles.button} onClick={() => navigate("/my-account")}>Lawyer account</button>}
+                {userType === 'customer' && <button style={styles.button} onClick={() => navigate("/my-account")}>Customer account</button>}
                 {userType === 'lawyer' && <Link style={styles.link} to="/see-missions">See my missions</Link>}
                 {userType === 'customer' && <Link style={styles.link} to="/see-bookings">See my bookings</Link>}
                 <button style={styles.button} onClick={insertInfo}>Insert My Info</button>  
