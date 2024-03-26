@@ -96,7 +96,7 @@ const Navbar = () => {
         },
         navbarText: {
             color: 'white',
-            marginBottom: '2px',
+            marginBottom: '20px',
         },
         navbarLinks: {
             display: 'flex',
@@ -104,6 +104,7 @@ const Navbar = () => {
             alignItems: 'center',
             gap: '2px',
             color: 'white',
+            
           
         },
         managementOptions: {
