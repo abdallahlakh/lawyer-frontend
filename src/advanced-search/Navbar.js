@@ -151,6 +151,7 @@ const Navbar = () => {
             <div style={styles.navbarText}>
                 {userType === 'customer' && <Link to="/my-account">Customer account</Link>}
                 {userType === 'lawyer' && <Link to="/my-account">Lawyer account</Link>}
+                <button style={styles.button} onClick={handleManagementOptionsClick}>Manage Account</button>
             </div>
             <div style={styles.navbarLinks}>
                 {userType === 'lawyer' && <Link to="/see-missions">See my missions</Link>}
@@ -159,7 +160,6 @@ const Navbar = () => {
                 <button style={styles.button} onClick={getInfo}>Get My Info</button>
                 <Link style={styles.link} to="/advanced-search">Search For Lawyers</Link>
                 <button style={styles.button} onClick={logoutAccount}>Logout</button>
-                <button style={styles.button} onClick={handleManagementOptionsClick}>Manage Account</button>
             </div>
             {showManagementOptions && (
                 <div style={styles.managementOptions}>
