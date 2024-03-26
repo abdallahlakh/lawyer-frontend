@@ -123,13 +123,6 @@ const Navbar = () => {
             transition: 'background-color 0.2s',
         },
     };
-    const filterSectionRef = useRef(null);
-
-    // Function to scroll to filter section
-    const scrollToFilterSection = () => {
-        navigate('/advanced-search');
-        filterSectionRef.current.scrollIntoView({ behavior: 'smooth' });
-    };
     
 
     // Define other functions like getUserData, updateUserData, and changePassword in a similar way
@@ -146,8 +139,7 @@ const Navbar = () => {
             {userType === 'customer' && <Link to="/see-bookings">See my bookings</Link>}
             <button onClick={insertInfo}>Insert My Info</button>  
             <button onClick={getInfo}>Get My Info</button>
-            <button onClick={scrollToFilterSection}>Search For Lawyers</button>
-              
+            <Link to="/advanced-search">Search For Lawyers</Link>
             <button onClick={logoutAccount}>Logout</button>
             <button onClick={handleManagementOptionsClick}>Manage Account</button>
         </div>
