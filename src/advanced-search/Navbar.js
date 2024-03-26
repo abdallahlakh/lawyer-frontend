@@ -83,7 +83,6 @@ const Navbar = () => {
         setShowManagementOptions(!showManagementOptions);
     }
 
-
     const styles = {
         navbar: {
             display: 'flex',
@@ -103,9 +102,6 @@ const Navbar = () => {
             alignItems: 'center',
             gap: '10px',
             color: 'white',
-            '@media (max-width: 600px)': {
-                flexDirection: 'column',
-            },
         },
         link: {
             display: 'block',
@@ -128,9 +124,6 @@ const Navbar = () => {
             textAlign: 'center',
             transition: 'background-color 0.2s',
             cursor: 'pointer',
-            '@media (max-width: 600px)': {
-                marginBottom: '10px',
-            },
         },
         managementOptions: {
             position: 'absolute',
@@ -140,12 +133,9 @@ const Navbar = () => {
             borderRadius: '5px',
             boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
             textAlign: 'left',
-            '@media (max-width: 600px)': {
-                position: 'static',
-                boxShadow: 'none',
-            },
         },
     };
+
     return (
         <div style={styles.navbar}>
             <div style={styles.navbarText}>
