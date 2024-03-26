@@ -85,18 +85,34 @@ const Navbar = () => {
     const handleManagementOptionsClick = () => {
         setShowManagementOptions(!showManagementOptions);
     }
+    const styles = {
+        navbar: {
+            display: 'flex',
+            flexDirection: window.innerWidth > 768 ? 'row' : 'column',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: window.innerWidth > 768 ? '5px' : '3px',
+            backgroundColor: '#006400',
+        },
+        navbarLinks: {
+            display: 'flex',
+            flexDirection: window.innerWidth > 768 ? 'row' : 'column',
+            alignItems: 'center',
+            gap: window.innerWidth > 768 ? '0px' : '2px',
+        },
+    };
     
 
     // Define other functions like getUserData, updateUserData, and changePassword in a similar way
 
     return (
  
-        <div className="flex flex-col md:flex-row justify-between items-center h-12 md:h-16 p-3 md:p-5 bg-blue" style={{backgroundColor: "#006400"}}>
+        <div className="flex flex-col md:flex-row justify-between items-center h-12 md:h-16 p-3 md:p-5 bg-blue" style={styles.navbar}>
         <div className="text-white mb-2 md:mb-0">
             {userType === 'customer' && <Link to="/my-account">Customer account</Link>}
             {userType === 'lawyer' && <Link to="/my-account">Lawyer account</Link>}
         </div>
-        <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-2">
+        <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-2" style={styles.navbarLinks}>
             {userType === 'lawyer' && <Link to="/see-missions" className="text-white cursor-pointer">See my missions</Link>}
             {userType === 'customer' && <Link to="/see-bookings" className="text-white cursor-pointer">See my bookings</Link>}
             <button onClick={insertInfo} className="text-white cursor-pointer">Insert My Info</button>  
@@ -113,7 +129,8 @@ const Navbar = () => {
                 <Link to="/change-password" className="block p-2 text-white cursor-pointer transition-colors duration-200 hover:bg-gray-200">Change Password</Link>
             </div>
         )}
-    </div>       );
+    </div>
+     );
 }
 
 export default Navbar;
