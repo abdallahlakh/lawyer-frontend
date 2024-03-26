@@ -103,6 +103,8 @@ const Navbar = () => {
             flexDirection: 'row', // Change this line
             alignItems: 'center',
             gap: '2px',
+            color: 'white',
+          
         },
         managementOptions: {
             position: 'absolute',
