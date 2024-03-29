@@ -137,7 +137,7 @@ const Navbar = () => {
             </div>
             <div className="flex flex-col items-center space-y-4 text-white">
                 <button className="px-4 py-2 bg-gray-500 text-white rounded" onClick={handleManagementOptionsClick}>Manage Account</button>
-                <button className="px-4 py-2 bg-gray-500 text-white rounded" onClick={logoutAccount}>Logout</button>
+                <button onClick={toggleNavbar} className="fixed bottom-0 right-0 m-4 p-2 bg-gray-700 text-white rounded"><i className="fas fa-times"></i></button>   
             </div>
             <div className="flex flex-col items-center space-y-4 text-white">
                 <button className="px-4 py-2 bg-gray-500 text-white rounded" onClick={handleActionChoice}>What do you want to do? <i className="fas fa-arrow-right"></i></button>
