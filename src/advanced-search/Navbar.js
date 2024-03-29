@@ -72,6 +72,11 @@ const Navbar = () => {
     const toggleNavbar = () => {
         setIsNavbarVisible(!isNavbarVisible);
     }
+    const [actionChoice, setActionChoice] = useState(null);
+
+    const handleActionChoice = () => {
+        setActionChoice(prevChoice => prevChoice === 'search' ? 'bookings' : 'search');
+    }
 
     const styles = {
         navbar: {
