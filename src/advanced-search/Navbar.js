@@ -131,7 +131,7 @@ const Navbar = () => {
     {isNavbarVisible && (
         
        <div className="fixed right-0 top-0 h-screen flex flex-col justify-between items-center p-4 bg-gray-700 z-50 transition-all duration-500 ease-in-out">
-           <button onClick={toggleNavbar} style={{right: '25px'}} className="absolute top-0 m-2 p-2 bg-gray-700 text-white rounded">X</button>
+           <button onClick={toggleNavbar} style={{left: '25px'}} className="absolute top-0 m-2 p-2 bg-gray-700 text-white rounded">X</button>
             <div className="text-white mb-8">
                 {userType === 'customer' && <Link to="/my-account" className="text-white">Customer account</Link>}
                 {userType === 'lawyer' && <Link to="/my-account" className="text-white">Lawyer account</Link>}
