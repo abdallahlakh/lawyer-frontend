@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import fetchData from './Security/FetchData';
-
+import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css';
 const Navbar = () => {
     const navigate = useNavigate();
     const [showManagementOptions, setShowManagementOptions] = useState(false);
@@ -130,19 +130,18 @@ const hideNavbar = () => {
 
     return (
       <div>
-        <button onClick={hideNavbar} className="fixed bottom-0 right-0 m-4 p-2 bg-gray-700 text-white rounded"><i className="fas fa-times"></i></button>
+    <button onClick={hideNavbar} className="fixed bottom-0 right-0 m-4 p-2 bg-gray-700 text-white rounded"><i className="fas fa-times"></i></button>
     <button onClick={toggleNavbar} className="fixed right-0 top-0 m-4 p-2 bg-gray-700 text-white rounded">☰</button>
     {isNavbarVisible && (
         <div className="fixed right-0 top-0 h-screen flex flex-col justify-between items-center p-4 bg-gray-700 z-50 transition-all duration-500 ease-in-out">
             <div className="text-white mb-8">
                 {userType === 'customer' && <Link to="/my-account" className="text-white">Customer account</Link>}
                 {userType === 'lawyer' && <Link to="/my-account" className="text-white">Lawyer account</Link>}
-                <button className="px-4 py-2 bg-gray-500 text-white rounded" onClick={handleManagementOptionsClick}>Manage Account</button>
-                <button className="px-4 py-2 bg-gray-500 text-white rounded" onClick={logoutAccount}>Logout</button>
-            
+                <i className="fas fa-cog px-4 py-2 text-white" onClick={handleManagementOptionsClick}></i>
+                <i className="fas fa-sign-out-alt px-4 py-2 text-white" onClick={logoutAccount}></i>
             </div>
             {showManagementOptions && (
-                <div className="bg-black rounded shadow-lg text-left z-10 p-4">
+                <div className="absolute top-12 right-4 bg-black rounded shadow-lg text-left z-10 p-4 transition-all duration-500 ease-in-out">
                     <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={getAccount}>Get Account</Link>
                     <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={insertInfo}>Insert My Info</Link>
                     <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={getInfo}>Get My Info</Link>
@@ -152,12 +151,12 @@ const hideNavbar = () => {
                 </div>
             )}
             <div className="flex flex-col items-center space-y-4 text-white">
-            <button className="px-4 py-2 bg-gray-500 text-white rounded" onClick={handleActionChoice}>What do you want to do? <i className="fas fa-arrow-right"></i></button>
-            {actionChoice === 'search' && <Link to="/advanced-search" className="text-white">Search For Lawyers</Link>}
-            {actionChoice === 'bookings' && userType === 'customer' && <Link to="/see-bookings" className="text-white">See my bookings</Link>}
-            {actionChoice === 'missions' && userType === 'lawyer' && <Link to="/see-missions" className="text-white">See my missions</Link>}
+                <button className="px-4 py-2 bg-gray-500 text-white rounded" onClick={handleActionChoice}>What do you want to do? <i className="fas fa-arrow-right"></i></button>
+                {actionChoice === 'search' && <Link to="/advanced-search" className="text-white">Search For Lawyers</Link>}
+                {actionChoice === 'bookings' && userType === 'customer' && <Link to="/see-bookings" className="text-white">See my bookings</Link>}
+                {actionChoice === 'missions' && userType === 'lawyer' && <Link to="/see-missions" className="text-white">See my missions</Link>}
             </div>
-            </div>
+        </div>
     )}
 </div>
     );
