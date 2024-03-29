@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import fetchData from './Security/FetchData';
-import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css';
 const Navbar = () => {
     const navigate = useNavigate();
     const [showManagementOptions, setShowManagementOptions] = useState(false);
