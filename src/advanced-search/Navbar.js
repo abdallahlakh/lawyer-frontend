@@ -3,10 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import fetchData from './Security/FetchData';
 const Navbar = () => {
     const navigate = useNavigate();
-    const [showManagementOptions, setShowManagementOptions] = useState(false);
+    const [showManagementOptions, setShowManagementOptions] = useState(true);
     const [userType, setUserType] = useState(null);
     const [id, setId] = useState(10);
-    const [isNavbarVisible, setIsNavbarVisible] = useState(false);
+    const [isNavbarVisible, setIsNavbarVisible] = useState(true);
 
 
     useEffect(() => {
