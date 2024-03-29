@@ -3,10 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import fetchData from './Security/FetchData';
 const Navbar = () => {
     const navigate = useNavigate();
-    const [showManagementOptions, setShowManagementOptions] = useState(true);
+    const [showManagementOptions, setShowManagementOptions] = useState(false);
     const [userType, setUserType] = useState(null);
     const [id, setId] = useState(10);
-    const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+    const [isNavbarVisible, setIsNavbarVisible] = useState(false);
 
 
     useEffect(() => {
@@ -136,8 +136,8 @@ const hideNavbar = () => {
             <div className="text-white mb-8">
                 {userType === 'customer' && <Link to="/my-account" className="text-white">Customer account</Link>}
                 {userType === 'lawyer' && <Link to="/my-account" className="text-white">Lawyer account</Link>}
-                <i className="fas fa-cog px-4 py-2 text-white" onClick={handleManagementOptionsClick}></i>
-                <i className="fas fa-sign-out-alt px-4 py-2 text-white" onClick={logoutAccount}></i>
+                <i className="fas fa-cog px-4 py-2 text-white" onClick={handleManagementOptionsClick}>manage account</i>
+                <i className="fas fa-sign-out-alt px-4 py-2 text-white" onClick={logoutAccount}>logout</i>
             </div>
             {showManagementOptions && (
                 <div className="absolute top-12 right-4 bg-black rounded shadow-lg text-left z-10 p-4 transition-all duration-500 ease-in-out">
