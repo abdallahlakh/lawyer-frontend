@@ -128,7 +128,7 @@ const hideNavbar = () => {
     };
 
     return (
-        <div>
+      <div>
     <button onClick={hideNavbar} className="fixed bottom-0 right-0 m-4 p-2 bg-gray-700 text-white rounded"><i className="fas fa-times"></i></button>
     <button onClick={toggleNavbar} className="fixed right-0 top-0 m-4 p-2 bg-gray-700 text-white rounded">☰</button>
     {isNavbarVisible && (
@@ -136,8 +136,8 @@ const hideNavbar = () => {
             <div className="text-white mb-8">
                 {userType === 'customer' && <Link to="/my-account" className="text-white">Customer account</Link>}
                 {userType === 'lawyer' && <Link to="/my-account" className="text-white">Lawyer account</Link>}
-                <i className="fas fa-cog px-4 py-2 text-white" onClick={() => setShowManagementOptions(!showManagementOptions)}>manage account</i>
-                <i className="fas fa-sign-out-alt px-4 py-2 text-white" onClick={logoutAccount}>logout</i>
+                <button className="fas fa-cog px-4 py-2 text-white" onClick={() => setShowManagementOptions(!showManagementOptions)}>manage account</button>
+                <button className="fas fa-sign-out-alt px-4 py-2 text-white" onClick={logoutAccount}>logout</button>
             </div>
             {showManagementOptions && (
                 <div className="w-full bg-black rounded shadow-lg text-left z-10 p-4 transition-all duration-500 ease-in-out">
