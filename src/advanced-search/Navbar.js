@@ -136,16 +136,10 @@ const hideNavbar = () => {
             <div className="text-white mb-8">
                 {userType === 'customer' && <Link to="/my-account" className="text-white">Customer account</Link>}
                 {userType === 'lawyer' && <Link to="/my-account" className="text-white">Lawyer account</Link>}
-            </div>
-            <div className="flex flex-col items-center space-y-4 text-white">
                 <button className="px-4 py-2 bg-gray-500 text-white rounded" onClick={handleManagementOptionsClick}>Manage Account</button>
-              <button onClick={hideNavbar} className="fixed bottom-0 right-0 m-4 p-2 bg-gray-700 text-white rounded"><i className="fas fa-times"></i></button>
             </div>
             <div className="flex flex-col items-center space-y-4 text-white">
-                <button className="px-4 py-2 bg-gray-500 text-white rounded" onClick={handleActionChoice}>What do you want to do? <i className="fas fa-arrow-right"></i></button>
-                {actionChoice === 'search' && <Link to="/advanced-search" className="text-white">Search For Lawyers</Link>}
-                {actionChoice === 'bookings' && userType === 'customer' && <Link to="/see-bookings" className="text-white">See my bookings</Link>}
-                {actionChoice === 'missions' && userType === 'lawyer' && <Link to="/see-missions" className="text-white">See my missions</Link>}
+                <button className="px-4 py-2 bg-gray-500 text-white rounded" onClick={logoutAccount}>Logout</button>
             </div>
             {showManagementOptions && (
                 <div className="bg-black rounded shadow-lg text-left z-10 p-4">
