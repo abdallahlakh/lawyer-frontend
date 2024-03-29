@@ -123,34 +123,34 @@ const Navbar = () => {
 
     return (
         <div>
-        <button onClick={toggleNavbar} className="fixed right-0 top-0 m-4 p-2 bg-green-700 text-white rounded">☰</button>
-        {isNavbarVisible && (
-            <div className="fixed right-0 top-0 h-screen flex flex-col justify-between items-center p-4 bg-green-700">
-                {/* Rest of your code */}
-                <div className="text-white mb-8">
-                    {userType === 'customer' && <Link to="/my-account" className="text-white">Customer account</Link>}
-                    {userType === 'lawyer' && <Link to="/my-account" className="text-white">Lawyer account</Link>}
-                </div>
-                <div className="flex flex-col items-center space-y-4 text-white">
-                    {userType === 'lawyer' && <Link to="/see-missions" className="text-white">See my missions</Link>}
-                    {userType === 'customer' && <Link to="/see-bookings" className="text-white">See my bookings</Link>}
-                    <Link to="/advanced-search" className="text-white">Search For Lawyers</Link>
-                    <button className="px-4 py-2 bg-green-500 text-white rounded" onClick={logoutAccount}>Logout</button>
-                    <button className="px-4 py-2 bg-green-500 text-white rounded" onClick={handleManagementOptionsClick}>Manage Account</button>
-                </div>
-                {showManagementOptions && (
-                    <div className="absolute top-12 right-4 bg-black rounded shadow-lg text-left z-10">
-                        <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={getAccount}>Get Account</Link>
-                        <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={insertInfo}>Insert My Info</Link>
-                        <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={getInfo}>Get My Info</Link>
-                        <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/delete-account">Delete Account</Link>
-                        <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/reset-password">Reset Password</Link>
-                        <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/change-password">Change Password</Link>
-                    </div>
-                )}
+    <button onClick={toggleNavbar} className="fixed right-0 top-0 m-4 p-2 bg-gray-700 text-white rounded">☰</button>
+    {isNavbarVisible && (
+        <div className="fixed right-0 top-0 h-screen flex flex-col justify-between items-center p-4 bg-gray-700 z-50">
+            {/* Rest of your code */}
+            <div className="text-white mb-8">
+                {userType === 'customer' && <Link to="/my-account" className="text-white">Customer account</Link>}
+                {userType === 'lawyer' && <Link to="/my-account" className="text-white">Lawyer account</Link>}
             </div>
-        )}
-    </div>
+            <div className="flex flex-col items-center space-y-4 text-white">
+                {userType === 'lawyer' && <Link to="/see-missions" className="text-white">See my missions</Link>}
+                {userType === 'customer' && <Link to="/see-bookings" className="text-white">See my bookings</Link>}
+                <Link to="/advanced-search" className="text-white">Search For Lawyers</Link>
+                <button className="px-4 py-2 bg-gray-500 text-white rounded" onClick={logoutAccount}>Logout</button>
+                <button className="px-4 py-2 bg-gray-500 text-white rounded" onClick={handleManagementOptionsClick}>Manage Account</button>
+            </div>
+            {showManagementOptions && (
+                <div className="absolute top-12 right-4 bg-black rounded shadow-lg text-left z-10">
+                    <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={getAccount}>Get Account</Link>
+                    <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={insertInfo}>Insert My Info</Link>
+                    <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={getInfo}>Get My Info</Link>
+                    <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/delete-account">Delete Account</Link>
+                    <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/reset-password">Reset Password</Link>
+                    <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/change-password">Change Password</Link>
+                </div>
+            )}
+        </div>
+    )}
+</div>
     );
 }
 
