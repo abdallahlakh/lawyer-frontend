@@ -149,7 +149,8 @@ const hideNavbar = () => {
                     <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/change-password">Change Password</Link>
                 </div>
             )}
-            <button className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={handleActionChoice}>What do you want to do? <i className="fas fa-arrow-right"></i></button>
+            what do you want to do ?
+            <button className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={handleActionChoice}>switch <i className="fas fa-arrow-right"></i></button>
             <div className="w-full bg-black rounded shadow-lg text-left z-10 p-4 transition-all duration-500 ease-in-out" style={{position: 'relative', top: '20px'}}>
                 {actionChoice === 'search' && <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/advanced-search">Search For Lawyers</Link>}
                 {actionChoice === 'bookings' && userType === 'customer' && <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/see-bookings">See my bookings</Link>}
