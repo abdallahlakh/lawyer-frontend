@@ -122,11 +122,10 @@ const Navbar = () => {
     };
 
     return (
-        <div>
+      <div>
     <button onClick={toggleNavbar} className="fixed right-0 top-0 m-4 p-2 bg-gray-700 text-white rounded">☰</button>
     {isNavbarVisible && (
         <div className="fixed right-0 top-0 h-screen flex flex-col justify-between items-center p-4 bg-gray-700 z-50">
-            {/* Rest of your code */}
             <div className="text-white mb-8">
                 {userType === 'customer' && <Link to="/my-account" className="text-white">Customer account</Link>}
                 {userType === 'lawyer' && <Link to="/my-account" className="text-white">Lawyer account</Link>}
@@ -135,6 +134,8 @@ const Navbar = () => {
                 {userType === 'lawyer' && <Link to="/see-missions" className="text-white">See my missions</Link>}
                 {userType === 'customer' && <Link to="/see-bookings" className="text-white">See my bookings</Link>}
                 <Link to="/advanced-search" className="text-white">Search For Lawyers</Link>
+            </div>
+            <div className="flex flex-col items-center space-y-4 text-white">
                 <button className="px-4 py-2 bg-gray-500 text-white rounded" onClick={logoutAccount}>Logout</button>
                 <button className="px-4 py-2 bg-gray-500 text-white rounded" onClick={handleManagementOptionsClick}>Manage Account</button>
             </div>
