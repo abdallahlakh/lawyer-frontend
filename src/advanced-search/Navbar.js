@@ -123,6 +123,13 @@ const Navbar = () => {
             color: 'white',
             cursor: 'pointer',
         },
+        closeButton: {
+        position: 'absolute',
+        right: '-10px',
+        '@media (max-width: 600px)': {
+            top: '0px',
+        },
+    },
     };
 
     return (
@@ -131,8 +138,7 @@ const Navbar = () => {
     {isNavbarVisible && (
         
        <div className="fixed right-0 top-0 h-screen flex flex-col justify-between items-center p-4 bg-gray-700 z-50 transition-all duration-500 ease-in-out">
-         <button onClick={toggleNavbar} style={{right: '-10px'}} className="absolute m-2 p-2 bg-gray-700 text-white rounded">X</button>
-        <div className="text-white mb-8">
+       <button onClick={toggleNavbar} style={styles.closeButton} className="absolute m-2 p-2 bg-gray-700 text-white rounded">X</button>        <div className="text-white mb-8">
                 {userType === 'customer' && <Link to="/my-account" className="text-white">Customer account</Link>}
                 {userType === 'lawyer' && <Link to="/my-account" className="text-white">Lawyer account</Link>}
                 <button className="fas fa-cog px-4 py-2 text-white" onClick={() => setShowManagementOptions(!showManagementOptions)}>manage account</button>
