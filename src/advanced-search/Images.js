@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import lawyerImage1 from './images/Screenshot from 2024-03-24 21-41-49.jpg'
 import lawyerImage2 from './images/mikhail-pavstyuk-EKy2OTRPXdw-unsplash.jpg';
 import lawyerImage4 from './images/Screenshot from 2024-03-24 21-55-47.jpg';
+
 const Images = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const images = [lawyerImage1, lawyerImage2,lawyerImage4];
@@ -15,7 +16,7 @@ const Images = () => {
     }, [images.length]);
 
     return (
-        <div style={{width: '100vw', height: '100vh'}} className="flex flex-col items-center">
+        <div style={{width: '100vw', height: '100vh', position: 'absolute', top: 0}} className="flex flex-col items-center">
             <div className="relative w-screen h-screen overflow-hidden mb-4">
                 <img
                     src={images[currentImageIndex]}
