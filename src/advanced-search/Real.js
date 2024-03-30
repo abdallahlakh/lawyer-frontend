@@ -3,14 +3,18 @@ import HeaderSection from './HeaderSection';
 import Images from './Images';
 import RealNavbar from './RealNavbar';
 import AboutUs from './AboutUs';
+
 const Real = () => {
     return (
         <div>
             <RealNavbar/>
-            <HeaderSection />
-            <Images />
+            <div className="relative">
+                <Images />
+                <div className="absolute top-0 left-0 w-full h-full bg-white bg-opacity-50">
+                    <HeaderSection />
+                </div>
+            </div>
             <AboutUs />
-            
         </div>
     );
 };
