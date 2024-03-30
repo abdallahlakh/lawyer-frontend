@@ -74,9 +74,7 @@ const FilterSection = () => {
         .catch(error => console.error('Error:', error));
     };
     
-    return (
-      User
-<div className="relative top-0 left-0 right-0 flex items-center justify-center z-8">
+    return (<div className="relative top-0 left-0 right-0 flex items-center justify-center z-8">
     <div className="flex items-center justify-center relative " >
         <div className="flex flex-col items-center justify-center border border-green-300 p-4 rounded-md relative z-10 bg-white bg-opacity-80 shadow-lg">
             <div className="mt-4 space-y-4">
