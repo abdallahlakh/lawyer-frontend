@@ -12,7 +12,7 @@ const SearchSection = () => {
     return (
         <div className="header-section" style={headerStyles}>
             <div className="text-white py-8 text-center">
-                <h1 className="text-4xl font-semibold mb-4">Mouhami DZ</h1>
+                <h1 className="text-4xl font-semibold mb-4">Lawyer Website</h1>
                 <h2 className="text-xl">Where You Make Booking, Review, and more ...</h2>
             </div>
         </div>
