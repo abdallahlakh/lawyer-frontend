@@ -76,67 +76,67 @@ const FilterSection = () => {
     
     return (
         <div className="relative top-0 left-0 right-0 flex items-center justify-center z-8">
-        <button onClick={() => navigate(-1)} className="bg-gray-900 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded mt-4 transition duration-200 ease-in-out transform hover:scale-105 shadow-lg self-center text-base">Back</button>
-        <div className="flex items-center justify-center relative">
-            <div className="flex flex-col items-center justify-center border border-blue-300 p-4 rounded-md relative z-10 bg-white bg-opacity-80 shadow-lg">
-                <div className="mt-4 space-y-4">
-                    <label htmlFor="nameInput" className="sr-only">the name of lawyer</label>
-                    <input
-                        id="nameInput"
-                        type="text"
-                        placeholder="the name of lawyer"
-                        value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
-                        onKeyDown={handleInputKeyDown}
-                        className="w-full py-2 px-4 border border-blue-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400"
-                    />
-    
-                    <select
-                        className="w-full py-2 px-4 border border-blue-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400"
-                        onChange={(e) => setSelectedWilaya(e.target.value)}
-                        value={selectedWilaya}
-                    >
-                        <option value="">select the province</option>
-                        {wilayas.map((wilaya, index) => (
-                            <option key={index} value={wilaya}>{wilaya}</option>
-                        ))}
-                    </select>
-    
-                    <div>
-                        {legalSpecialities.map((speciality, index) => (
-                            <label key={index} className="inline-flex items-center cursor-pointer">
-                                <input
-                                    type="checkbox"
-                                    value={speciality}
-                                    onChange={handleSpecialityChange}
-                                    checked={selectedSpecialities.includes(speciality)}
-                                    className="form-checkbox h-5 w-5 text-blue-500 rounded border border-blue-300 focus:ring focus:ring-blue-400"
-                                />
-                                <span className="ml-2 text-sm">{speciality}</span>
-                            </label>
-                        ))}
-                    </div>
-    
-                    <select
-                        className="w-full py-2 px-4 border border-blue-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400"
-                        onChange={(e) => setSelectedLanguage(e.target.value)}
-                        value={selectedLanguage}
-                    >
-                        <option value="">select the language</option>
-                        <option value="french">French</option>
-                        <option value="arabic">Arabic</option>
-                        <option value="english">English</option>
-                    </select>
-    
-                    <button className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-blue-400"
-                        onClick={handleSearch}>
-                        Search
-                    </button>
-                    <SearchResult searchResults={searchResults} />
+    <div className="flex items-center justify-center relative">
+        <div className="flex flex-col items-center justify-center border border-gray-300 p-4 rounded-md relative z-10 bg-white bg-opacity-80 shadow-lg">
+            <button onClick={() => navigate(-1)} className="bg-gray-900 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded mt-4 transition duration-200 ease-in-out transform hover:scale-105 shadow-lg self-center text-base mb-4">Back</button>
+            <div className="mt-4 space-y-4">
+                <label htmlFor="nameInput" className="sr-only">the name of lawyer</label>
+                <input
+                    id="nameInput"
+                    type="text"
+                    placeholder="the name of lawyer"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    onKeyDown={handleInputKeyDown}
+                    className="w-full py-2 px-4 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-400"
+                />
+
+                <select
+                    className="w-full py-2 px-4 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-400"
+                    onChange={(e) => setSelectedWilaya(e.target.value)}
+                    value={selectedWilaya}
+                >
+                    <option value="">select the province</option>
+                    {wilayas.map((wilaya, index) => (
+                        <option key={index} value={wilaya}>{wilaya}</option>
+                    ))}
+                </select>
+
+                <div className="grid grid-cols-2 gap-2">
+                    {legalSpecialities.map((speciality, index) => (
+                        <label key={index} className="inline-flex items-center cursor-pointer">
+                            <input
+                                type="checkbox"
+                                value={speciality}
+                                onChange={handleSpecialityChange}
+                                checked={selectedSpecialities.includes(speciality)}
+                                className="form-checkbox h-5 w-5 text-gray-500 rounded border border-gray-300 focus:ring focus:ring-gray-400"
+                            />
+                            <span className="ml-2 text-sm">{speciality}</span>
+                        </label>
+                    ))}
                 </div>
+
+                <select
+                    className="w-full py-2 px-4 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-400"
+                    onChange={(e) => setSelectedLanguage(e.target.value)}
+                    value={selectedLanguage}
+                >
+                    <option value="">select the language</option>
+                    <option value="french">French</option>
+                    <option value="arabic">Arabic</option>
+                    <option value="english">English</option>
+                </select>
+
+                <button className="w-full bg-gray-900 hover:bg-gray-700 text-white py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-gray-400"
+                    onClick={handleSearch}>
+                    Search
+                </button>
+                <SearchResult searchResults={searchResults} />
             </div>
         </div>
     </div>
+</div>
     );
 };
 
