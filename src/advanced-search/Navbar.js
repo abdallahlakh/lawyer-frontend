@@ -138,7 +138,7 @@ const Navbar = () => {
     {isNavbarVisible && (
        <div className="fixed right-0 top-0 h-screen sm:w-64 w-full flex flex-col justify-between items-center p-4 bg-gray-700 z-50 transition-all duration-500 ease-in-out">
            <button onClick={toggleNavbar} style={{left:'-10px',top:'-20px'}} className="absolute m-2 p-2 bg-gray-700 text-white rounded">☰</button>        
-           <div className="text-white mb-8">
+           <div className="text-white mb-8 flex justify-center">
                <div className="mb-4">
                    {userType === 'customer' && <Link to="/my-account" className="text-white">Customer account</Link>}
                </div>
@@ -160,15 +160,15 @@ const Navbar = () => {
                <div className="flex items-center mb-4">
                    <span className="text-white mr-2">What do you want to do?</span>
                </div>
-               <div className="flex justify-between items-center">
-                   <button className="px-4 py-2 bg-blue-500 text-white transition-colors duration-200 hover:bg-blue-700" onClick={handleActionChoice}><i className="fas fa-arrow-left"></i>left</button>
+               <div className="flex justify-between items-center flex-wrap"> {/* Added flex-wrap */}
+                   <button className="px-4 py-2 bg-blue-500 text-white transition-colors duration-200 hover:bg-blue-700 mb-2" onClick={handleActionChoice}><i className="fas fa-arrow-left"></i>left</button>
                    <div>
                        {actionChoice === 'search' && <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/advanced-search">Search For Lawyers</Link>}
                        {actionChoice === 'bookings' && userType === 'customer' && <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/see-bookings">See my bookings</Link>}
                        {actionChoice === 'missions' && userType === 'lawyer' && <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/see-missions">See my missions</Link>}
                        {actionChoice === '' && <span className="block px-4 py-2 text-white">No option selected yet.</span>}
                    </div>
-                   <button className="px-4 py-2 bg-blue-500 text-white transition-colors duration-200 hover:bg-blue-700" onClick={handleActionChoice}><i className="fas fa-arrow-right">right</i></button>
+                   <button className="px-4 py-2 bg-blue-500 text-white transition-colors duration-200 hover:bg-blue-700 mb-2" onClick={handleActionChoice}><i className="fas fa-arrow-right">right</i></button>
                </div>
            </div>
        </div>
