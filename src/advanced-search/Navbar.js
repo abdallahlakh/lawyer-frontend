@@ -74,7 +74,11 @@ const Navbar = () => {
     const [actionChoice, setActionChoice] = useState(null);
 
     const handleActionChoice = () => {
-        setActionChoice(prevChoice => prevChoice === 'search' ? 'bookings' : 'search');
+        if (userType === 'customer') {
+            setActionChoice(prevChoice => prevChoice === 'search' ? 'bookings' : 'search');
+        } else if (userType === 'lawyer') {
+            setActionChoice(prevChoice => prevChoice === 'search' ? 'missions' : 'search');
+        }
     }
 
     const styles = {
