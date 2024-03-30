@@ -2,20 +2,19 @@ import React, { useState } from 'react';
 import { useNavigate, Link} from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
-import { CircularProgress } from '@material-ui/core'; // Import CircularProgress for loading icon
+import BeatLoader from "react-spinners/BeatLoader";
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const [message, setMessage] = useState(''); // New state variable for the success message
-    const [loading, setLoading] = useState(false); // New state variable for loading
-    const [isFormValid, setIsFormValid] = useState(false); // New state variable for form validation
+    const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [isFormValid, setIsFormValid] = useState(false);
 
-    
     const handleSubmit = async (event) => {
         event.preventDefault();
-        setLoading(true); // Set loading to true when user clicks login button
+        setLoading(true);
 
         console.log(`Email: ${email}, Password: ${password}`);
     
@@ -33,18 +32,16 @@ const LoginForm = () => {
                 console.log(data);
                 localStorage.setItem('access-token', data.access);
                 localStorage.setItem('refresh-token', data.refresh);
-                setMessage('Login successful!'); // Set the success message
+                setMessage('Login successful!');
                 navigate('/my-account');
             } else {
                 setMessage('Login failed');
                 console.error('JWT token creation failed');
-
             }
         } catch (error) {
             console.error('Error:', error);
         }
-        setLoading(false); // Set loading to false when login process is completed
-
+        setLoading(false);
     };
 
     const styles = {
@@ -108,6 +105,7 @@ const LoginForm = () => {
             textAlign: 'center',
         },
     };
+
     return (
         <div style={styles.container}>
             <form style={styles.form} onSubmit={handleSubmit}>
@@ -121,22 +119,11 @@ const LoginForm = () => {
                     <input style={styles.input} type="password" value={password} onChange={e => setPassword(e.target.value)} required />
                 </label>
 
-                <button style={styles.btn} type="submit" disabled={!isFormValid || loading}>
-                Submit
-                {loading ? <CircularProgress color="inherit" size={20} /> : 'Submit'}
+                <button style={styles.button} type="submit" disabled={!isFormValid || loading}>
+                    {loading ? <BeatLoader color="#ffffff" size={10} /> : 'Submit'}
                 </button>
                 <Link style={styles.link} to="/Registration">Register</Link>
-                {/* <GoogleLogin
-                    onSuccess={async credentialResponse => {
-                        const decoded = jwtDecode(credentialResponse.credential);
-                        console.log(decoded);
-                    }}
-                    onError={() => {
-                        console.log('Login Failed');
-                    }}
-                /> */}
-                 {message && <p className="text-green-500">{message}</p>} {/* Display the success message if it exists */}
-           
+                {message && <p className="text-green-500">{message}</p>}
             </form>
         </div>
     );

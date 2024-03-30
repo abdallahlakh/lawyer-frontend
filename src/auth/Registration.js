@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'; // Import Link from React Router
-import { CircularProgress } from '@material-ui/core'; // Import CircularProgress for loading icon
+import { Link } from 'react-router-dom';
+import BeatLoader from "react-spinners/BeatLoader";
 
 const RegistrationForm = () => {
     const [email, setEmail] = useState('');
@@ -12,13 +12,21 @@ const RegistrationForm = () => {
     const [isAdmin, setIsAdmin] = useState(false);
     const [isLawyer, setIsLawyer] = useState(false);
     const [isCustomer, setIsCustomer] = useState(false);
-    const [message, setMessage] = useState(''); // New state variable for the success message
-    const [loading, setLoading] = useState(false); // New state variable for loading
-    const [isFormValid, setIsFormValid] = useState(false); // New state variable for form validation
+    const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [isFormValid, setIsFormValid] = useState(false);
+
+    useEffect(() => {
+        if (email && name && password && rePassword && password === rePassword) {
+            setIsFormValid(true);
+        } else {
+            setIsFormValid(false);
+        }
+    }, [email, name, password, rePassword]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        setLoading(true); // Set loading to true when user clicks submit button
+        setLoading(true);
 
         if (password !== rePassword) {
             setError("Passwords do not match");
@@ -48,12 +56,10 @@ const RegistrationForm = () => {
             console.log(response.data);
         } catch (error) {
             setMessage('Failed to create account');
-
             console.error(error);
-            // Handle error response from server
         }
 
-        setLoading(false); // Set loading to false when registration process is completed
+        setLoading(false);
     };
 
     const styles = {
@@ -99,31 +105,30 @@ const RegistrationForm = () => {
 
     return (
         <div style={styles.container}>
-        <form onSubmit={handleSubmit}>
-            <div style={styles.formGroup}>
-                <label>Email</label>
-                <input style={styles.formControl} type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-            </div>
-            <div style={styles.formGroup}>
-                <label>Name</label>
-                <input style={styles.formControl} type="text" value={name} onChange={(e) => setName(e.target.value)} required />
-            </div>
-            <div style={styles.formGroup}>
-                <label>Password</label>
-                <input style={styles.formControl} type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-            </div>
-            <div style={styles.formGroup}>
-                <label>Confirm Password</label>
-                <input style={styles.formControl} type="password" value={rePassword} onChange={(e) => setRePassword(e.target.value)} required />
-            </div>
-            <button style={styles.btn} type="submit" disabled={!isFormValid || loading}>
-                {loading ? <CircularProgress color="inherit" size={20} /> : 'Register'}
-                register
-            </button>
-            <Link style={styles.link} to="/login">Login Here</Link>
-            {message && <p style={{color: 'green'}}>{message}</p>} {/* Display the success message if it exists */}
-        </form>
-    </div>
+            <form onSubmit={handleSubmit}>
+                <div style={styles.formGroup}>
+                    <label>Email</label>
+                    <input style={styles.formControl} type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                </div>
+                <div style={styles.formGroup}>
+                    <label>Name</label>
+                    <input style={styles.formControl} type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+                </div>
+                <div style={styles.formGroup}>
+                    <label>Password</label>
+                    <input style={styles.formControl} type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                </div>
+                <div style={styles.formGroup}>
+                    <label>Confirm Password</label>
+                    <input style={styles.formControl} type="password" value={rePassword} onChange={(e) => setRePassword(e.target.value)} required />
+                </div>
+                <button style={styles.btn} type="submit" disabled={!isFormValid || loading}>
+                    {loading ? <BeatLoader color="#ffffff" size={10} /> : 'Register'}
+                </button>
+                <Link style={styles.link} to="/login">Login Here</Link>
+                {message && <p style={{color: 'green'}}>{message}</p>}
+            </form>
+        </div>
     );
 };
 
