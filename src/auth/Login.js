@@ -43,10 +43,82 @@ const LoginForm = () => {
     };
 
     const styles = {
-        // Styles omitted for brevity, you can reuse the same styles from your original component
-        // Ensure to include styles for spinner and disabled button
+        container: {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            minHeight: '100vh',
+            background: '#f2f2f2',
+        },
+        form: {
+            width: '300px',
+            padding: '20px',
+            background: '#fff',
+            borderRadius: '8px',
+            boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)',
+        },
+        title: {
+            marginBottom: '20px',
+            fontSize: '24px',
+            fontWeight: 'bold',
+            color: '#333',
+            textAlign: 'center',
+        },
+        label: {
+            display: 'block',
+            marginBottom: '10px',
+            fontSize: '14px',
+            color: '#333',
+        },
+        input: {
+            width: '100%',
+            padding: '10px',
+            marginBottom: '20px',
+            border: '1px solid #ccc',
+            borderRadius: '4px',
+            fontSize: '16px',
+        },
+        button: {
+            width: '100%',
+            padding: '12px',
+            background: '#333',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '4px',
+            fontSize: '16px',
+            cursor: 'pointer',
+            transition: 'background 0.3s ease',
+            position: 'relative', // Set position relative for loading spinner
+        },
+        spinner: {
+            position: 'absolute',
+            top: '50%',
+            right: '15px',
+            transform: 'translateY(-50%)',
+            color: '#fff', // Change color to white
+        },
+        link: {
+            display: 'block',
+            marginTop: '20px',
+            fontSize: '14px',
+            color: '#333',
+            textDecoration: 'none',
+            textAlign: 'center',
+        },
+        message: {
+            textAlign: 'center',
+            marginTop: '20px',
+            fontSize: '14px',
+            color: 'green',
+        },
+        errorMessage: {
+            textAlign: 'center',
+            marginTop: '10px',
+            fontSize: '14px',
+            color: 'red', // Change color to red for error message
+        },
     };
-
+    
     return (
         <div style={styles.container}>
             <form style={styles.form} onSubmit={handleSubmit}>
@@ -65,7 +137,8 @@ const LoginForm = () => {
                     Submit
                 </button>
                 <Link style={styles.link} to="/Registration">Register</Link>
-                {message && <p className="text-green-500">{message}</p>} {/* Display the success message if it exists */}
+                {message === 'Login failed' && <p style={styles.errorMessage}>{message}</p>}
+
             </form>
         </div>
     );

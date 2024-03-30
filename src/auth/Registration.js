@@ -95,6 +95,10 @@ const RegistrationForm = () => {
             textDecoration: 'none',
             color: '#007bff',
         },
+        successMessage: {
+            color: 'green',
+            marginTop: '10px',
+        },
     };
 
     return (
@@ -134,7 +138,7 @@ const RegistrationForm = () => {
                     Register
                 </button>
                 <Link style={styles.link} to="/login">Login Here</Link>
-                {message && <p className="text-green-500">{message}</p>}
+                {message && <p style={styles.successMessage}>{message}</p>}
             </form>
         </div>
     );
