@@ -141,7 +141,7 @@ const Navbar = () => {
 <button onClick={toggleNavbar} className="fixed right-0 top-0 m-4 p-2 bg-gray-800 text-white rounded">☰</button>
     {isNavbarVisible && ( 
         <div className="fixed right-0 top-0 h-full w-full flex flex-col justify-between items-center p-4 bg-black bg-opacity-20 shadow-lg z-50 transition-all duration-500 ease-in-out">
-          <button onClick={toggleNavbar} style={{left:'-10px',top:'-20px'}} className="absolute m-2 p-2 bg-black bg-opacity-80 text-white rounded">☰</button>        
+          <button onClick={toggleNavbar} style={{right:'-10px',top:'-20px'}} className="absolute m-2 p-2 bg-black bg-opacity-80 text-white rounded">☰</button>        
            <div className="text-white mb-8 flex flex-col justify-center items-center">
                <div className="mb-4">
                    {userType === 'customer' && <Link to="/my-account" className="text-white">Customer account</Link>}

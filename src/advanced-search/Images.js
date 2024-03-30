@@ -15,7 +15,7 @@ const Images = () => {
     }, [images.length]);
 
     return (
-        <div className="flex flex-col items-center">
+        <div style={{width: '100vw', height: '100vh'}} className="flex flex-col items-center">
             <div className="relative w-screen h-screen overflow-hidden mb-4">
                 <img
                     src={images[currentImageIndex]}
