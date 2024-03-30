@@ -133,7 +133,7 @@ const Navbar = () => {
     };
 
     return (
-        <div>
+<div>
     <button onClick={toggleNavbar} className="fixed right-0 top-0 m-4 p-2 bg-green-700 text-white rounded">☰</button>
     {isNavbarVisible && (
         <div className="fixed right-0 top-0 h-screen sm:w-64 w-full flex flex-col justify-between items-center p-4 bg-green-700 text-white z-50 transition-all duration-500 ease-in-out">
@@ -173,9 +173,6 @@ const Navbar = () => {
         </div>
     )}
 </div>
-    )}
-</div>
-
     );
 }
 
