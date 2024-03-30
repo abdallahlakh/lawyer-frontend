@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import { Link } from 'react-router-dom'; // Import Link from React Router
 
 const RegistrationForm = () => {
     const [email, setEmail] = useState('');
@@ -12,21 +11,11 @@ const RegistrationForm = () => {
     const [isAdmin, setIsAdmin] = useState(false);
     const [isLawyer, setIsLawyer] = useState(false);
     const [isCustomer, setIsCustomer] = useState(false);
-    const [message, setMessage] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [isFormValid, setIsFormValid] = useState(false);
+    const [message, setMessage] = useState(''); // New state variable for the success message
 
-    useEffect(() => {
-        if (email && name && password && rePassword && password === rePassword) {
-            setIsFormValid(true);
-        } else {
-            setIsFormValid(false);
-        }
-    }, [email, name, password, rePassword]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        setLoading(true);
 
         if (password !== rePassword) {
             setError("Passwords do not match");
@@ -42,6 +31,7 @@ const RegistrationForm = () => {
             is_customer: isCustomer,
         };
 
+
         try {
             const response = await axios.post('https://djoserauthapi-1.onrender.com/api/auth/users/', data);
             console.log(response);
@@ -56,10 +46,10 @@ const RegistrationForm = () => {
             console.log(response.data);
         } catch (error) {
             setMessage('Failed to create account');
-            console.error(error);
-        }
 
-        setLoading(false);
+            console.error(error);
+            // Handle error response from server
+        }
     };
 
     const styles = {
@@ -68,24 +58,20 @@ const RegistrationForm = () => {
             maxWidth: '400px',
             margin: '0 auto',
             padding: '20px',
-            background: '#333',
         },
         formGroup: {
             marginBottom: '15px',
-            color: '#fff',
         },
         formControl: {
             width: '100%',
             padding: '8px',
             border: '1px solid #ccc',
             borderRadius: '3px',
-            background: '#555',
-            color: '#fff',
         },
         btn: {
             width: '100%',
             padding: '10px',
-            backgroundColor: '#999',
+            backgroundColor: '#007bff',
             color: '#fff',
             border: 'none',
             borderRadius: '3px',
@@ -99,37 +85,48 @@ const RegistrationForm = () => {
             display: 'block',
             marginTop: '10px',
             textDecoration: 'none',
-            color: '#fff',
+            color: '#007bff',
         },
     };
 
     return (
         <div style={styles.container}>
-            <form onSubmit={handleSubmit}>
-                <div style={styles.formGroup}>
-                    <label>Email</label>
-                    <input style={styles.formControl} type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                </div>
-                <div style={styles.formGroup}>
-                    <label>Name</label>
-                    <input style={styles.formControl} type="text" value={name} onChange={(e) => setName(e.target.value)} required />
-                </div>
-                <div style={styles.formGroup}>
-                    <label>Password</label>
-                    <input style={styles.formControl} type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                </div>
-                <div style={styles.formGroup}>
-                    <label>Confirm Password</label>
-                    <input style={styles.formControl} type="password" value={rePassword} onChange={(e) => setRePassword(e.target.value)} required />
-                </div>
-                <button style={styles.btn} type="submit" disabled={!isFormValid || loading}>
-                    {loading ? <CircularProgress size={24} /> : 'Submit'}
-                      register
-                </button>
-                <Link style={styles.link} to="/login">Login Here</Link>
-                {message && <p style={{color: 'green'}}>{message}</p>}
-            </form>
-        </div>
+        <form onSubmit={handleSubmit}>
+            <div style={styles.formGroup}>
+                <label>Email</label>
+                <input style={styles.formControl} type="email" value={email} onChange={e => setEmail(e.target.value)} required />
+            </div>
+            <div style={styles.formGroup}>
+                <label>Username</label>
+                <input style={styles.formControl} type="text" value={name} onChange={e => setName(e.target.value)} required />
+            </div>
+            <div style={styles.formGroup}>
+                <label>Password</label>
+                <input style={styles.formControl} type="password" value={password} onChange={e => setPassword(e.target.value)} required />
+            </div>
+            <div style={styles.formGroup}>
+                <label>Confirm Password</label>
+                <input style={styles.formControl} type="password" value={rePassword} onChange={e => setRePassword(e.target.value)} required />
+            </div>
+            <div style={styles.formGroup}>
+               <input type="radio" name="userType" value="admin" checked={isAdmin} onChange={e => {setIsAdmin(e.target.checked); setIsLawyer(false); setIsCustomer(false);}} />
+               <label>Admin</label>
+            </div>
+            <div style={styles.formGroup}>
+                <input type="radio" name="userType" value="lawyer" checked={isLawyer} onChange={e => {setIsLawyer(e.target.checked); setIsAdmin(false); setIsCustomer(false);}} />
+                <label>Lawyer</label>
+            </div>
+            <div style={styles.formGroup}>
+                <input type="radio" name="userType" value="customer" checked={isCustomer} onChange={e => {setIsCustomer(e.target.checked); setIsAdmin(false); setIsLawyer(false);}} />
+                <label>Customer</label>
+            </div>
+            {error && <div style={styles.alert}>{error}</div>}
+            <button style={styles.btn} type="submit">Register</button>
+            <Link style={styles.link} to="/login">Login Here</Link>
+            {message && <p className="text-green-500">{message}</p>} {/* Display the success message if it exists */}
+           
+        </form>
+    </div>
     );
 };
 
