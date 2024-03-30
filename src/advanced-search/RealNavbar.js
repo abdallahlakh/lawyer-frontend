@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const RealNavbar = () => {
   
@@ -17,7 +17,7 @@ export default RealNavbar;
 
 const styles = {
     navbar: {
-        backgroundColor: '#006400',
+        backgroundColor: '#006400', // Dark green background color
         display: 'flex',
         justifyContent: 'flex-end',
         alignItems: 'center',
@@ -29,12 +29,12 @@ const styles = {
     },
     link: {
         textDecoration: 'none',
-        color: '#fff',
+        color: '#fff', // White text color
         marginRight: '10px',
         cursor: 'pointer',
     },
     logoutButton: {
-        backgroundColor: 'hsl(207, 100%, 50%)',
+        backgroundColor: 'hsl(207, 100%, 50%)', // Green color for the logout button
         color: '#fff',
         border: 'none',
         borderRadius: '4px',
@@ -42,7 +42,7 @@ const styles = {
         marginLeft: '20px',
     },
     manageAccountButton: {
-        backgroundColor: 'hsl(207, 100%, 50%)',
+        backgroundColor: 'hsl(207, 100%, 50%)', // Green color for the manage account button
         color: '#fff',
         border: 'none',
         borderRadius: '4px',
