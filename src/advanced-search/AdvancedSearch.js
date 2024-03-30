@@ -15,9 +15,6 @@ const AdvancedSearch = () => {
 
     return (
         <div>
-            <Navbar/>
-            <SearchSection/>
-            <Images />
             <div ref={filterSectionRef}>
                 <FilterSection />
             </div>

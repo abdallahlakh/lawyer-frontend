@@ -150,8 +150,7 @@ const Navbar = () => {
                <button className="fas fa-sign-out-alt px-4 py-2 text-white" onClick={logoutAccount}>Logout</button>
            </div>
            {showManagementOptions && (
-               <div className="w-full bg-gray-800 rounded shadow-lg text-left z-10 p-4 transition-all duration-500 ease-in-out" style={{width: 'calc(100% - 32px)'}}>
-                   <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={getAccount}>Get Account</Link>
+              <div className="w-full bg-gray-800 bg-opacity-50 rounded shadow-lg text-left z-10 p-4 transition-all duration-500 ease-in-out" style={{width: 'calc(100% - 32px)'}}>     <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={getAccount}>Get Account</Link>
                    <button className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={insertInfo}>Insert My Info</button>
                    <button className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={getInfo}>Get My Info</button>
                    <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/delete-account">Delete Account</Link>
@@ -166,7 +165,7 @@ const Navbar = () => {
                <div className="flex justify-center">
                    <button className="px-4 py-2 bg-gray-800 text-white rounded-lg transition-colors duration-200 hover:bg-gray-700 mr-2" onClick={handleActionChoice}>Switch</button>
                    <div>
-                       {actionChoice === 'search' && <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/advanced-search">Search For Lawyers</Link>}
+                       {actionChoice === 'search' && setIsNavbarVisible(false) && <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/advanced-search">Search For Lawyers</Link>}
                        {actionChoice === 'bookings' && userType === 'customer' && <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/see-bookings">See my bookings</Link>}
                        {actionChoice === 'missions' && userType === 'lawyer' && <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/see-missions">See my missions</Link>}
                        {actionChoice === '' && <span className="block px-4 py-2 text-white">No option selected yet.</span>}
