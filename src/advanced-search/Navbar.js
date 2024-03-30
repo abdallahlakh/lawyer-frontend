@@ -134,18 +134,18 @@ const Navbar = () => {
 
     return (
       <div>
-    <button onClick={toggleNavbar} className="fixed right-0 top-0 m-4 p-2 bg-gray-700 text-white rounded">☰</button>
+    <button onClick={toggleNavbar} className="fixed right-0 top-0 m-4 p-2 bg-gray-700 text-white rounded lg:hidden">☰</button>
     {isNavbarVisible && (
-        <div className="fixed right-0 top-0 h-screen flex flex-col justify-between items-center p-4 bg-gray-700 z-50 transition-all duration-500 ease-in-out">
-            <button onClick={toggleNavbar} style={{right: '-10px',top:'-10px'}} className="absolute m-2 p-2 bg-gray-700 text-white rounded">X</button>
-            <div className="text-white mb-8">
+        <div className="fixed right-0 top-0 h-screen flex flex-col justify-between items-center p-4 bg-gray-700 z-50 transition-all duration-500 ease-in-out lg:flex lg:static lg:h-auto lg:bg-transparent lg:justify-start lg:items-stretch lg:p-0 lg:z-0">
+            <button onClick={toggleNavbar} style={{right: '-10px',top:'-10px'}} className="absolute m-2 p-2 bg-gray-700 text-white rounded lg:hidden">X</button>
+            <div className="text-white mb-8 lg:flex lg:space-x-4">
                 {userType === 'customer' && <Link to="/my-account" className="text-white">Customer account</Link>}
                 {userType === 'lawyer' && <Link to="/my-account" className="text-white">Lawyer account</Link>}
                 <button className="fas fa-cog px-4 py-2 text-white" onClick={() => setShowManagementOptions(!showManagementOptions)}>manage account</button>
                 <button className="fas fa-sign-out-alt px-4 py-2 text-white" onClick={logoutAccount}>logout</button>
             </div>
             {showManagementOptions && (
-                <div className="w-full bg-black rounded shadow-lg text-left z-10 p-4 transition-all duration-500 ease-in-out">
+                <div className="w-full bg-black rounded shadow-lg text-left z-10 p-4 transition-all duration-500 ease-in-out lg:w-auto lg:bg-transparent lg:shadow-none lg:p-0 lg:space-x-4">
                     <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={getAccount}>Get Account</Link>
                     <button className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={insertInfo}>Insert My Info</button>
                     <button className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={getInfo}>Get My Info</button>
@@ -154,11 +154,11 @@ const Navbar = () => {
                     <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/change-password">Change Password</Link>
                 </div>
             )}
-            <div className="w-full bg-black rounded shadow-lg text-left z-10 p-4 transition-all duration-500 ease-in-out" style={{position: 'relative', top: '10px'}}>
+            <div className="w-full bg-black rounded shadow-lg text-left z-10 p-4 transition-all duration-500 ease-in-out lg:w-auto lg:bg-transparent lg:shadow-none lg:p-0 lg:space-x-4" style={{position: 'relative', top: '10px'}}>
                 <div className="flex items-center mb-4">
                     <span className="text-white mr-2">What do you want to do?</span>
                 </div>
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center lg:flex lg:space-x-4">
                     <button className="px-4 py-2 bg-blue-500 text-white transition-colors duration-200 hover:bg-blue-700" onClick={handleActionChoice}><i className="fas fa-arrow-left"></i>left</button>
                     <div>
                         {actionChoice === 'search' && <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/advanced-search">Search For Lawyers</Link>}
