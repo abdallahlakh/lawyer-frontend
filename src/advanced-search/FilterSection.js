@@ -74,11 +74,12 @@ const FilterSection = () => {
         .catch(error => console.error('Error:', error));
     };
     
-    return (<div className="relative top-0 left-0 right-0 flex items-center justify-center z-8">
-    <div className="flex items-center justify-center relative " >
-        <div className="flex flex-col items-center justify-center border border-green-300 p-4 rounded-md relative z-10 bg-white bg-opacity-80 shadow-lg">
+    return (
+        <div className="relative top-0 left-0 right-0 flex items-center justify-center z-8">
+    <div className="flex items-center justify-center relative">
+        <div className="flex flex-col items-center justify-center border border-gray-300 p-4 rounded-md relative z-10 bg-gray-800 bg-opacity-80 shadow-lg">
             <div className="mt-4 space-y-4">
-                <label htmlFor="nameInput" className="sr-only">the name of lawyer</label>
+                <label htmlFor="nameInput" className="sr-only text-white">the name of lawyer</label>
                 <input
                     id="nameInput"
                     type="text"
@@ -86,23 +87,23 @@ const FilterSection = () => {
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyDown={handleInputKeyDown}
-                    className="w-full py-2 px-4 border border-green-300 rounded-md focus:outline-none focus:ring focus:ring-green-400"
+                    className="w-full py-2 px-4 border border-green-300 rounded-md focus:outline-none focus:ring focus:ring-green-400 text-white"
                 />
 
                 <select
-                    className="w-full py-2 px-4 border border-green-300 rounded-md focus:outline-none focus:ring focus:ring-green-400"
+                    className="w-full py-2 px-4 border border-green-300 rounded-md focus:outline-none focus:ring focus:ring-green-400 text-white"
                     onChange={(e) => setSelectedWilaya(e.target.value)}
                     value={selectedWilaya}
                 >
                     <option value="">select the province</option>
                     {wilayas.map((wilaya, index) => (
-                        <option key={index} value={wilaya}>{wilaya}</option>
+                        <option key={index} value={wilaya} className="text-white">{wilaya}</option>
                     ))}
                 </select>
 
                 <div>
                     {legalSpecialities.map((speciality, index) => (
-                        <label key={index} className="inline-flex items-center cursor-pointer">
+                        <label key={index} className="inline-flex items-center cursor-pointer text-white">
                             <input
                                 type="checkbox"
                                 value={speciality}
@@ -116,7 +117,7 @@ const FilterSection = () => {
                 </div>
 
                 <select
-                    className="w-full py-2 px-4 border border-green-300 rounded-md focus:outline-none focus:ring focus:ring-green-400"
+                    className="w-full py-2 px-4 border border-green-300 rounded-md focus:outline-none focus:ring focus:ring-green-400 text-white"
                     onChange={(e) => setSelectedLanguage(e.target.value)}
                     value={selectedLanguage}
                 >
@@ -135,6 +136,7 @@ const FilterSection = () => {
         </div>
     </div>
 </div>
+
     );
 };
 
