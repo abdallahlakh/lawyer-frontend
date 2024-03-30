@@ -138,11 +138,11 @@ const Navbar = () => {
     {isNavbarVisible && (
        <div className="fixed right-0 top-0 h-screen sm:w-64 w-full flex flex-col justify-between items-center p-4 bg-gray-700 z-50 transition-all duration-500 ease-in-out">
            <button onClick={toggleNavbar} style={{left:'-10px',top:'-20px'}} className="absolute m-2 p-2 bg-gray-700 text-white rounded">☰</button>        
-           <div className="text-white mb-8 flex justify-center">
+           <div className="text-white mb-8 flex flex-col justify-center items-center">
                <div className="mb-4">
                    {userType === 'customer' && <Link to="/my-account" className="text-white">Customer account</Link>}
+                   {userType === 'lawyer' && <Link to="/my-account" className="text-white">Lawyer account</Link>}
                </div>
-               {userType === 'lawyer' && <Link to="/my-account" className="text-white">Lawyer account</Link>}
                <button className="fas fa-cog px-4 py-2 text-white" onClick={() => setShowManagementOptions(!showManagementOptions)}>Manage Account</button>
                <button className="fas fa-sign-out-alt px-4 py-2 text-white" onClick={logoutAccount}>Logout</button>
            </div>
