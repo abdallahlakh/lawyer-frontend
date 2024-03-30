@@ -151,7 +151,7 @@ const InfoFormLawyer = () => {
     ];
 
     return (
-<form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 border border-gray-300 rounded-md bg-gradient-to-r from-green-200 to-green-100 shadow-lg">
+<form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 border border-gray-300 rounded-md bg-gradient-to-r from-gray-200 to-gray-100 shadow-lg">
     <input className="w-full p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-400 bg-white" type="text" value={lawyerData.name} onChange={e => setLawyerData({ ...lawyerData, name: e.target.value })} placeholder="Lawyer Name" />
     <input className="w-full p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-400 bg-white" type="text" value={lawyerData.email} onChange={e => setLawyerData({ ...lawyerData, email: e.target.value })} placeholder="Lawyer Email" />
     <input className="w-full p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-400 bg-white" type="text" value={lawyerData.phone} onChange={e => setLawyerData({ ...lawyerData, phone: e.target.value })} placeholder="Lawyer Phone" />
@@ -194,7 +194,7 @@ const InfoFormLawyer = () => {
     {messagee && <p className="text-red-500 text-center mt-2">{messagee}</p>}
     {message && <p className="text-green-500 text-center mt-2">{message}</p>}
 </form>
- 
+
     );
 };
 
