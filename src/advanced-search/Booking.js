@@ -108,12 +108,12 @@ const Booking = () => {
     };   
 
     return (
-        <div className="container mx-auto px-4 py-8 flex justify-center items-center min-h-screen">
+      <div className="container mx-auto px-4 py-8 flex justify-center items-center min-h-screen">
     <div className="w-full max-w-md">
-        <h2 className="text-4xl font-bold mb-6 text-green-900 text-center">Make Booking</h2>
-        <div className="flex flex-col items-center bg-white p-6 rounded-lg shadow-lg">
+        <h2 className="text-4xl font-bold mb-6 text-gray-800 text-center">Make Booking</h2>
+        <div className="flex flex-col items-center bg-gray-800 p-6 rounded-lg shadow-lg">
             {/* Rest of your code... */}
-            <div className="flex flex-col text-gray-800 space-y-4">
+            <div className="flex flex-col text-white space-y-4">
                 <div className="flex flex-col items-center space-y-2">
                     <label className="font-bold text-lg">Time From:</label>
                     <input type="time" value={timeFrom} onChange={e => setTimeFrom(e.target.value)} className="border-2 border-gray-300 rounded-md p-2 focus:outline-none focus:border-green-500 w-full" />
@@ -137,6 +137,7 @@ const Booking = () => {
         </div>
     </div>
 </div>
+
     );
 };
 
