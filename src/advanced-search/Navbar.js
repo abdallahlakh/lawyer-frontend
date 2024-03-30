@@ -133,45 +133,46 @@ const Navbar = () => {
     };
 
     return (
-      <div>
+   <div>
     <button onClick={toggleNavbar} className="fixed right-0 top-0 m-4 p-2 bg-gray-700 text-white rounded">☰</button>
     {isNavbarVisible && (
-        
-       <div className="fixed right-0 top-0 h-screen flex flex-col justify-between items-center p-4 bg-gray-700 z-50 transition-all duration-500 ease-in-out">
-       <button onClick={toggleNavbar} style={{left:'-10px',top:'-20px'}} className="absolute m-2 p-2 bg-gray-700 text-white rounded">☰</button>        <div className="text-white mb-8">
-                {userType === 'customer' && <Link to="/my-account" className="text-white">Customer account</Link>}
-                {userType === 'lawyer' && <Link to="/my-account" className="text-white">Lawyer account</Link>}
-                <button className="fas fa-cog px-4 py-2 text-white" onClick={() => setShowManagementOptions(!showManagementOptions)}>manage account</button>
-                <button className="fas fa-sign-out-alt px-4 py-2 text-white" onClick={logoutAccount}>logout</button>
-            </div>
-            {showManagementOptions && (
-                <div className="w-full bg-black rounded shadow-lg text-left z-10 p-4 transition-all duration-500 ease-in-out">
-                    <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={getAccount}>Get Account</Link>
-                    <button className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={insertInfo}>Insert My Info</button>
-                    <button className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={getInfo}>Get My Info</button>
-                    <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/delete-account">Delete Account</Link>
-                    <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/reset-password">Reset Password</Link>
-                    <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/change-password">Change Password</Link>
-                </div>
-            )}
-            <div className="w-full bg-black rounded shadow-lg text-left z-10 p-4 transition-all duration-500 ease-in-out" style={{position: 'relative', top: '10px'}}>
-                <div className="flex items-center mb-4">
-                    <span className="text-white mr-2">What do you want to do?</span>
-                </div>
-                <div className="flex justify-between items-center">
-                    <button className="px-4 py-2 bg-blue-500 text-white transition-colors duration-200 hover:bg-blue-700" onClick={handleActionChoice}><i className="fas fa-arrow-left"></i>left</button>
-                    <div>
-                        {actionChoice === 'search' && <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/advanced-search">Search For Lawyers</Link>}
-                        {actionChoice === 'bookings' && userType === 'customer' && <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/see-bookings">See my bookings</Link>}
-                        {actionChoice === 'missions' && userType === 'lawyer' && <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/see-missions">See my missions</Link>}
-                        {actionChoice === '' && <span className="block px-4 py-2 text-white">No option selected yet.</span>}
-                    </div>
-                    <button className="px-4 py-2 bg-blue-500 text-white transition-colors duration-200 hover:bg-blue-700" onClick={handleActionChoice}><i className="fas fa-arrow-right">right</i></button>
-                </div>
-            </div>
-        </div>
+       <div className="fixed right-0 top-0 h-screen sm:w-64 w-full flex flex-col justify-between items-center p-4 bg-gray-700 z-50 transition-all duration-500 ease-in-out">
+           <button onClick={toggleNavbar} style={{left:'-10px',top:'-20px'}} className="absolute m-2 p-2 bg-gray-700 text-white rounded">☰</button>        
+           <div className="text-white mb-8">
+               {userType === 'customer' && <Link to="/my-account" className="text-white">Customer account</Link>}
+               {userType === 'lawyer' && <Link to="/my-account" className="text-white">Lawyer account</Link>}
+               <button className="fas fa-cog px-4 py-2 text-white" onClick={() => setShowManagementOptions(!showManagementOptions)}>manage account</button>
+               <button className="fas fa-sign-out-alt px-4 py-2 text-white" onClick={logoutAccount}>logout</button>
+           </div>
+           {showManagementOptions && (
+               <div className="w-full bg-black rounded shadow-lg text-left z-10 p-4 transition-all duration-500 ease-in-out">
+                   <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={getAccount}>Get Account</Link>
+                   <button className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={insertInfo}>Insert My Info</button>
+                   <button className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" onClick={getInfo}>Get My Info</button>
+                   <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/delete-account">Delete Account</Link>
+                   <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/reset-password">Reset Password</Link>
+                   <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/change-password">Change Password</Link>
+               </div>
+           )}
+           <div className="w-full bg-black rounded shadow-lg text-left z-10 p-4 transition-all duration-500 ease-in-out" style={{position: 'relative', top: '10px'}}>
+               <div className="flex items-center mb-4">
+                   <span className="text-white mr-2">What do you want to do?</span>
+               </div>
+               <div className="flex justify-between items-center">
+                   <button className="px-4 py-2 bg-blue-500 text-white transition-colors duration-200 hover:bg-blue-700" onClick={handleActionChoice}><i className="fas fa-arrow-left"></i>left</button>
+                   <div>
+                       {actionChoice === 'search' && <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/advanced-search">Search For Lawyers</Link>}
+                       {actionChoice === 'bookings' && userType === 'customer' && <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/see-bookings">See my bookings</Link>}
+                       {actionChoice === 'missions' && userType === 'lawyer' && <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/see-missions">See my missions</Link>}
+                       {actionChoice === '' && <span className="block px-4 py-2 text-white">No option selected yet.</span>}
+                   </div>
+                   <button className="px-4 py-2 bg-blue-500 text-white transition-colors duration-200 hover:bg-blue-700" onClick={handleActionChoice}><i className="fas fa-arrow-right">right</i></button>
+               </div>
+           </div>
+       </div>
     )}
 </div>
+
       
     );
 }
