@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const RealNavbar = () => {
     const styles = {
         navbar: {
-            backgroundColor: 'rgba(0, 0, 0, 0.5)', // Transparent black background
+            backgroundColor: 'transparent', // Transparent background
             display: 'flex',
             justifyContent: 'flex-end',
             alignItems: 'center',
