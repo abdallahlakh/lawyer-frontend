@@ -81,11 +81,12 @@ const Review = () => {
         setRating(newRating);
     };
 
-    return (<div className="container mx-auto px-4 py-8 flex justify-center">
+    return (
+        <div className="container mx-auto px-4 py-8 flex justify-center">
     <div className="w-full max-w-md">
         <h2 className="text-4xl font-bold mb-6 text-green-900 text-center">Submit Review</h2>
-        <div className="bg-white p-8 rounded-lg shadow-xl">
-            <div className="flex flex-col items-center text-gray-800 space-y-4">
+        <div className="bg-gradient-to-r from-green-200 to-green-100 p-8 rounded-lg shadow-xl">
+            <div className="flex flex-col items-center text-white space-y-4">
                 <div className="w-full">
                     <label className="font-bold text-xl block text-center">Rating:</label>
                     <div className="flex justify-center">
@@ -105,7 +106,7 @@ const Review = () => {
                     <textarea 
                         value={comment} 
                         onChange={e => setComment(e.target.value)} 
-                        className="border-2 border-gray-300 rounded-lg p-3 focus:outline-none focus:border-green-500 w-full h-20 shadow-md transition duration-500 ease-in-out hover:shadow-xl resize-none" 
+                        className="border-2 border-white rounded-lg p-3 focus:outline-none focus:border-green-500 w-full h-20 shadow-md transition duration-500 ease-in-out hover:shadow-xl resize-none text-gray-800" 
                     />
                 </div>
             </div>
@@ -116,6 +117,7 @@ const Review = () => {
         </div>
     </div>
 </div>
+
     );
 };
 
