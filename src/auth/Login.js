@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link} from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
-import BeatLoader from "react-spinners/BeatLoader";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
@@ -120,7 +120,8 @@ const LoginForm = () => {
                 </label>
 
                 <button style={styles.button} type="submit" disabled={!isFormValid || loading}>
-                    {loading ? <BeatLoader color="#ffffff" size={10} /> : 'Submit'}
+                {loading ? <CircularProgress size={24} /> : 'Submit'}
+                     login
                 </button>
                 <Link style={styles.link} to="/Registration">Register</Link>
                 {message && <p className="text-green-500">{message}</p>}

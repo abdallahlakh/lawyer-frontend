@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import BeatLoader from "react-spinners/BeatLoader";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const RegistrationForm = () => {
     const [email, setEmail] = useState('');
@@ -123,7 +123,8 @@ const RegistrationForm = () => {
                     <input style={styles.formControl} type="password" value={rePassword} onChange={(e) => setRePassword(e.target.value)} required />
                 </div>
                 <button style={styles.btn} type="submit" disabled={!isFormValid || loading}>
-                    {loading ? <BeatLoader color="#ffffff" size={10} /> : 'Register'}
+                    {loading ? <CircularProgress size={24} /> : 'Submit'}
+                      register
                 </button>
                 <Link style={styles.link} to="/login">Login Here</Link>
                 {message && <p style={{color: 'green'}}>{message}</p>}
