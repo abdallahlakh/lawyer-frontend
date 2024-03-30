@@ -55,90 +55,108 @@ const RegistrationForm = () => {
 
     const styles = {
         container: {
-            width: '100%',
-            maxWidth: '400px',
-            margin: '0 auto',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            minHeight: '100vh',
+            background: '#f2f2f2',
+        },
+        form: {
+            width: '300px',
             padding: '20px',
+            background: '#fff',
+            borderRadius: '8px',
+            boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)',
         },
-        formGroup: {
-            marginBottom: '15px',
+        title: {
+            marginBottom: '20px',
+            fontSize: '24px',
+            fontWeight: 'bold',
+            color: '#333',
+            textAlign: 'center',
         },
-        formControl: {
-            width: '100%',
-            padding: '8px',
-            border: '1px solid #ccc',
-            borderRadius: '3px',
+        label: {
+            display: 'block',
+            marginBottom: '10px',
+            fontSize: '14px',
+            color: '#333',
         },
-        btn: {
+        input: {
             width: '100%',
             padding: '10px',
-            backgroundColor: '#007bff',
+            marginBottom: '20px',
+            border: '1px solid #ccc',
+            borderRadius: '4px',
+            fontSize: '16px',
+            color: '#333', // Set input text color
+        },
+        button: {
+            width: '100%',
+            padding: '12px',
+            background: '#333',
             color: '#fff',
             border: 'none',
-            borderRadius: '3px',
+            borderRadius: '4px',
+            fontSize: '16px',
             cursor: 'pointer',
+            transition: 'background 0.3s ease',
             position: 'relative', // Set position relative for loading spinner
         },
         spinner: {
             position: 'absolute',
             top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-        },
-        alert: {
-            color: 'red',
-            marginBottom: '10px',
+            right: '15px',
+            transform: 'translateY(-50%)',
+            color: '#fff', // Change color to white
         },
         link: {
             display: 'block',
-            marginTop: '10px',
+            marginTop: '20px',
+            fontSize: '14px',
+            color: '#333',
             textDecoration: 'none',
-            color: '#007bff',
+            textAlign: 'center',
         },
-        successMessage: {
+        message: {
+            textAlign: 'center',
+            marginTop: '20px',
+            fontSize: '14px',
             color: 'green',
+        },
+        errorMessage: {
+            textAlign: 'center',
             marginTop: '10px',
+            fontSize: '14px',
+            color: 'red', // Change color to red for error message
         },
     };
 
     return (
         <div style={styles.container}>
-            <form onSubmit={handleSubmit}>
-                <div style={styles.formGroup}>
-                    <label>Email</label>
-                    <input style={styles.formControl} type="email" value={email} onChange={e => setEmail(e.target.value)} required />
-                </div>
-                <div style={styles.formGroup}>
-                    <label>Username</label>
-                    <input style={styles.formControl} type="text" value={name} onChange={e => setName(e.target.value)} required />
-                </div>
-                <div style={styles.formGroup}>
-                    <label>Password</label>
-                    <input style={styles.formControl} type="password" value={password} onChange={e => setPassword(e.target.value)} required />
-                </div>
-                <div style={styles.formGroup}>
-                    <label>Confirm Password</label>
-                    <input style={styles.formControl} type="password" value={rePassword} onChange={e => setRePassword(e.target.value)} required />
-                </div>
-                <div style={styles.formGroup}>
-                    <input type="radio" name="userType" value="admin" checked={isAdmin} onChange={e => { setIsAdmin(e.target.checked); setIsLawyer(false); setIsCustomer(false); }} />
-                    <label>Admin</label>
-                </div>
-                <div style={styles.formGroup}>
-                    <input type="radio" name="userType" value="lawyer" checked={isLawyer} onChange={e => { setIsLawyer(e.target.checked); setIsAdmin(false); setIsCustomer(false); }} />
-                    <label>Lawyer</label>
-                </div>
-                <div style={styles.formGroup}>
-                    <input type="radio" name="userType" value="customer" checked={isCustomer} onChange={e => { setIsCustomer(e.target.checked); setIsAdmin(false); setIsLawyer(false); }} />
-                    <label>Customer</label>
-                </div>
-                {error && <div style={styles.alert}>{error}</div>}
-                <button style={styles.btn} type="submit" disabled={isSubmitting}>
+            <form style={styles.form} onSubmit={handleSubmit}>
+                <h2 style={styles.title}>Register</h2>
+                <label style={styles.label}>
+                    Email:
+                    <input style={styles.input} type="email" value={email} onChange={e => setEmail(e.target.value)} required />
+                </label>
+                <label style={styles.label}>
+                    Username:
+                    <input style={styles.input} type="text" value={name} onChange={e => setName(e.target.value)} required />
+                </label>
+                <label style={styles.label}>
+                    Password:
+                    <input style={styles.input} type="password" value={password} onChange={e => setPassword(e.target.value)} required />
+                </label>
+                <label style={styles.label}>
+                    Confirm Password:
+                    <input style={styles.input} type="password" value={rePassword} onChange={e => setRePassword(e.target.value)} required />
+                </label>
+                <button style={styles.button} type="submit" disabled={isSubmitting}>
                     {isSubmitting && <FaSpinner style={styles.spinner} className="animate-spin" />} {/* Show spinner icon if submitting */}
                     Register
                 </button>
                 <Link style={styles.link} to="/login">Login Here</Link>
-                {message && <p style={styles.successMessage}>{message}</p>}
+                {message === 'Failed to create account' && <p style={styles.errorMessage}>{message}</p>}
             </form>
         </div>
     );
