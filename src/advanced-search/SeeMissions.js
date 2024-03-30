@@ -93,53 +93,51 @@ const SeeMissions = () => {
     }, [id]);
     
     return (
-        <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8">
     <div className="flex items-center justify-between mb-6">
-        <h2 className="text-3xl font-bold text-black">Your Missions</h2>
-        <button onClick={() => navigate(-1)} className="bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-4 rounded transition duration-200 ease-in-out transform hover:scale-105 shadow-lg">Back</button>
+        <h2 className="text-3xl font-bold text-gray-900">Your Missions</h2>
+        <button onClick={() => navigate(-1)} className="bg-gray-800 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded transition duration-200 ease-in-out transform hover:scale-105 shadow-lg">Back</button>
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {missions.length > 0 ? (
             missions.map(mission => (
-                <div key={mission.id} className="bg-white rounded-lg overflow-hidden shadow-lg relative">
+                <div key={mission.id} className="bg-gray-200 rounded-lg overflow-hidden shadow-lg relative">
                     <button 
                         onClick={() => deleteBooking(mission.id)} 
-                        className="absolute top-0 right-0 m-2 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded transition duration-200 ease-in-out transform hover:scale-105 shadow-lg"
+                        className="absolute top-0 right-0 m-2 bg-gray-600 hover:bg-gray-400 text-white font-bold py-1 px-2 rounded transition duration-200 ease-in-out transform hover:scale-105 shadow-lg"
                     >
                         X
                     </button>
                     <div className="p-6">
-                        <h3 className="text-xl font-semibold mb-2 text-black">mission ID: {mission.id}</h3>
-                        <p className="text-black">Date: {mission.date}</p>
-                        <p className="text-black">Time From: {mission.time_from}</p>
-                        <p className="text-black">Time To: {mission.time_to}</p>
-                        <p className="text-black">Lawyer: {mission.lawyer}</p>
-                        <p className="text-black">State: {mission.state}</p>
+                        <h3 className="text-xl font-semibold mb-2 text-gray-900">Mission ID: {mission.id}</h3>
+                        <p className="text-gray-900">Date: {mission.date}</p>
+                        <p className="text-gray-900">Time From: {mission.time_from}</p>
+                        <p className="text-gray-900">Time To: {mission.time_to}</p>
+                        <p className="text-gray-900">Lawyer: {mission.lawyer}</p>
+                        <p className="text-gray-900">State: {mission.state}</p>
                     </div>
                     <div className="p-6 flex justify-center space-x-4 items-center">
                         <Link 
                             to={`/customer-details/${mission.customer}`} 
-                            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-md transition duration-200 ease-in-out transform hover:scale-105"
+                            className="bg-gray-700 hover:bg-gray-500 text-white font-bold py-2 px-6 rounded-md transition duration-200 ease-in-out transform hover:scale-105"
                         >
                             See Customer
                         </Link>
                         <select 
                             id={`state-${mission.id}`} 
-                            className="border-2 border-black-500 text-black-700 bg-gray-100 hover:border-black-700 focus:border-white-700 h-10 pl-5 pr-10 hover:bg-gray-200 focus:outline-none appearance-none shadow-md cursor-pointer"
+                            className="border-2 border-gray-900 text-gray-900 bg-white hover:border-gray-700 focus:border-gray-700 h-10 pl-5 pr-10 hover:bg-gray-200 focus:outline-none appearance-none shadow-md cursor-pointer"
                         >
-                                    <option value="" disabled selected>Update the state</option>
-                                    <option value="CONFIRMED">Confirmed</option>
-                                    <option value="CANCELLED">Cancelled</option>
-                                    <option value="RESCHEDULED">Rescheduled</option>
-                                    <option value="COMPLETED">Completed</option>
-                                    <option value="NO_SHOW">No Show</option>
-                                    <option value="IN_PROGRESS">In Progress</option>
-   
-                            
-                         </select>
+                            <option value="" disabled selected>Update the state</option>
+                            <option value="CONFIRMED" className="py-1 text-gray-900">Confirmed</option>
+                            <option value="CANCELLED" className="py-1 text-gray-900">Cancelled</option>
+                            <option value="RESCHEDULED" className="py-1 text-gray-900">Rescheduled</option>
+                            <option value="COMPLETED" className="py-1 text-gray-900">Completed</option>
+                            <option value="NO_SHOW" className="py-1 text-gray-900">No Show</option>
+                            <option value="IN_PROGRESS" className="py-1 text-gray-900">In Progress</option>
+                        </select>
                         <button 
                             onClick={() => updateMissionState(mission.id)} 
-                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-md transition duration-200 ease-in-out transform hover:scale-105"
+                            className="bg-gray-900 hover:bg-gray-700 text-white font-bold py-2 px-6 rounded-md transition duration-200 ease-in-out transform hover:scale-105"
                         >
                             Update State
                         </button>
@@ -147,10 +145,11 @@ const SeeMissions = () => {
                 </div>
             ))
         ) : (
-            <p className="text-black text-center">You have no missions.</p>
+            <p className="text-gray-900 text-center">You have no missions.</p>
         )}
     </div>
 </div>
+
     );
 };
 
