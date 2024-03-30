@@ -171,11 +171,11 @@ const RegistrationForm = () => {
                     <input style={styles.input} type="password" value={rePassword} onChange={e => setRePassword(e.target.value)} required />
                 </label>
                 <label style={styles.checkboxLabel}>
-                    <input type="checkbox" checked={isLawyer} onChange={() => setIsLawyer(!isLawyer)} />
+                    <input type="checkbox" checked={isLawyer} onChange={() => {setIsLawyer(!isLawyer); setIsCustomer(false);}} />
                     Lawyer
                 </label>
                 <label style={styles.checkboxLabel}>
-                    <input type="checkbox" checked={isCustomer} onChange={() => setIsCustomer(!isCustomer)} />
+                    <input type="checkbox" checked={isCustomer} onChange={() => {setIsCustomer(!isCustomer); setIsLawyer(false);}} />
                     Customer
                 </label>
                 <button style={styles.button} type="submit" disabled={isSubmitting}>
