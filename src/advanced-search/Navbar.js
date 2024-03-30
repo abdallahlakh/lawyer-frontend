@@ -163,13 +163,27 @@ const Navbar = () => {
                    <span className="text-white mr-2">What do you want to do?</span>
                </div>
                <div className="flex justify-center">
-                   <button className="px-4 py-2 bg-gray-800 text-white rounded-lg transition-colors duration-200 hover:bg-gray-700 mr-2" onClick={handleActionChoice}>Switch</button>
-                   <div>
-                       {actionChoice === 'search' && setIsNavbarVisible(false) && <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/advanced-search">Search For Lawyers</Link>}
-                       {actionChoice === 'bookings' && userType === 'customer' && <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/see-bookings">See my bookings</Link>}
-                       {actionChoice === 'missions' && userType === 'lawyer' && <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/see-missions">See my missions</Link>}
-                       {actionChoice === '' && <span className="block px-4 py-2 text-white">No option selected yet.</span>}
-                   </div>
+               <button className="px-4 py-2 bg-gray-800 text-white rounded-lg transition-colors duration-200 hover:bg-gray-700 mr-2" onClick={handleActionChoice}>Switch</button>
+               <div>
+                   {actionChoice === 'search' && 
+                       <Link 
+                           className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" 
+                           to="/advanced-search"
+                           onClick={() => setIsNavbarVisible(false)}
+                       >
+                           Search For Lawyers
+                       </Link>
+                   }
+                   {actionChoice === 'bookings' && userType === 'customer' && 
+                       <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/see-bookings">See my bookings</Link>
+                   }
+                   {actionChoice === 'missions' && userType === 'lawyer' && 
+                       <Link className="block px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700" to="/see-missions">See my missions</Link>
+                   }
+                   {actionChoice === '' && 
+                       <span className="block px-4 py-2 text-white">No option selected yet.</span>
+                   }
+               </div>
                </div>
            </div>
        </div>
