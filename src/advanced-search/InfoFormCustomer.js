@@ -113,27 +113,28 @@ const InfoFormCustomer = () => {
 
 
     return (
-<form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 border border-gray-300 rounded-md bg-gradient-to-r from-green-200 to-green-100 shadow-lg">
-    <input className="w-full p-3 mb-4 border border-green-300 rounded-md focus:outline-none focus:ring focus:ring-green-400 bg-white" type="text" value={customerData.name} onChange={e => setCustomerData({ ...customerData, name: e.target.value })} placeholder="Customer Name" />
+<form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 border border-gray-300 rounded-md bg-gradient-to-r from-gray-200 to-gray-100 shadow-lg">
+    <input className="w-full p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-400 bg-white" type="text" value={customerData.name} onChange={e => setCustomerData({ ...customerData, name: e.target.value })} placeholder="Customer Name" />
     <input 
-    className="w-full p-3 mb-4 border border-green-300 rounded-md focus:outline-none focus:ring focus:ring-green-400 bg-white" 
-    type="email" 
-    value={customerData.email} 
-    onChange={e => setCustomerData({ ...customerData, email: e.target.value })} 
-    placeholder="Customer Email" 
-    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-    title="Please enter a valid email address."
-/>
-<input 
-    className="w-full p-3 mb-4 border border-green-300 rounded-md focus:outline-none focus:ring focus:ring-green-400 bg-white" 
-    type="tel" 
-    value={customerData.phone} 
-    onChange={e => setCustomerData({ ...customerData, phone: e.target.value })} 
-    placeholder="Customer Phone" 
-    pattern="\d{10}"
-    title="Please enter a valid phone number with 10 digits."
-/>  <select
-        className="w-full py-3 px-4 border border-green-300 rounded-md focus:outline-none focus:ring focus:ring-green-400 mb-4 bg-white text-gray-700"
+        className="w-full p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-400 bg-white" 
+        type="email" 
+        value={customerData.email} 
+        onChange={e => setCustomerData({ ...customerData, email: e.target.value })} 
+        placeholder="Customer Email" 
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        title="Please enter a valid email address."
+    />
+    <input 
+        className="w-full p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-400 bg-white" 
+        type="tel" 
+        value={customerData.phone} 
+        onChange={e => setCustomerData({ ...customerData, phone: e.target.value })} 
+        placeholder="Customer Phone" 
+        pattern="\d{10}"
+        title="Please enter a valid phone number with 10 digits."
+    />
+    <select
+        className="w-full py-3 px-4 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-400 mb-4 bg-white text-gray-700"
         value={selectedWilaya}
         onChange={(e) => setSelectedWilaya(e.target.value)}
     >
@@ -147,6 +148,7 @@ const InfoFormCustomer = () => {
     {messagee && <p className="text-red-500 text-center mt-2">{messagee}</p>}
     {message && <p className="text-green-500 text-center mt-2">{message}</p>}
 </form>
+
     );
 };
 
