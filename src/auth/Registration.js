@@ -187,7 +187,7 @@ const RegistrationForm = () => {
                     Register
                 </button>
                 <Link style={styles.link} to="/login">Login Here</Link>
-                {message === 'Failed to create account' && <p style={styles.errorMessage}>{message}</p>}
+                {message && <p style={styles.message}>{message}</p>} {/* Display message if exists */}
             </form>
         </div>
     );
