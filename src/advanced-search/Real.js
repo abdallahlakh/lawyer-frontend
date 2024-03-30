@@ -10,7 +10,7 @@ const Real = () => {
             <RealNavbar/>
             <div className="relative">
                 <Images />
-                <div className="absolute top-0 left-0 w-full h-full bg-white bg-opacity-50">
+                <div className="absolute top-0 left-0 w-full h-full">
                     <HeaderSection />
                 </div>
             </div>
